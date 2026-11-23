@@ -1,5 +1,5 @@
 /*
- * Tiny EN/PL switcher shared by every page.
+ * Tiny EN/PL/RU switcher shared by every page.
  *
  * Usage:
  *   1. Define window.I18N = { en: {...}, pl: {...} } (nested keys allowed) before this script.
@@ -14,7 +14,7 @@
   "use strict";
 
   var STORAGE_KEY = "portfolio-lang";
-  var LANGS = ["en", "pl"];
+  var LANGS = ["en", "pl", "ru"];
 
   // Strings used by shared UI (demo badge, demo forms) on every page.
   var SHARED = {
@@ -27,6 +27,7 @@
       _next: "Next project",
       _formSent: "Thank you! This is a demo form, so nothing was sent — but on a real site your message would land in the owner's inbox.",
       _formInvalid: "Please fill in the required fields.",
+      _stub: "Demo button — on a real website this would work. Nothing happened here.",
     },
     pl: {
       _demo: "Projekt demonstracyjny",
@@ -37,6 +38,18 @@
       _next: "Następny projekt",
       _formSent: "Dziękujemy! To formularz demonstracyjny, więc nic nie zostało wysłane — na prawdziwej stronie wiadomość trafiłaby do skrzynki właściciela.",
       _formInvalid: "Uzupełnij wymagane pola.",
+      _stub: "Przycisk demonstracyjny — na prawdziwej stronie by zadziałał. Tutaj nic się nie stało.",
+    },
+    ru: {
+      _demo: "Демо-проект",
+      _back: "Назад в портфолио",
+      _allProjects: "Все проекты",
+      _demoNotice: "Это демо-сайт из моего портфолио — компания вымышленная",
+      _prev: "Назад",
+      _next: "Следующий проект",
+      _formSent: "Спасибо! Это демо-форма, поэтому ничего не отправлено — на настоящем сайте сообщение пришло бы владельцу на почту.",
+      _formInvalid: "Заполните обязательные поля.",
+      _stub: "Демо-кнопка — на настоящем сайте она бы сработала. Здесь ничего не произошло.",
     },
   };
 
@@ -57,7 +70,9 @@
     } catch (e) {}
     if (LANGS.indexOf(saved) !== -1) return saved;
     var nav = (navigator.language || "en").toLowerCase();
-    return nav.indexOf("pl") === 0 ? "pl" : "en";
+    if (nav.indexOf("pl") === 0) return "pl";
+    if (/^(ru|uk|be)/.test(nav)) return "ru";
+    return "en";
   }
 
   var current = detect();

@@ -1,75 +1,32 @@
-# Portfolio — websites & AI integrations for small businesses
+# ArTT — websites that sell, AI that works
 
-**Live site: https://artt-portfolio.vercel.app**
+### ▶ [Open the live portfolio](https://artt-portfolio.vercel.app)
 
-A portfolio home page plus five working demo landing pages in different styles. Every page is responsive and switches between **English and Polish**.
+I build and rebuild websites for small businesses — clear on the first screen, fast on a phone, easy to buy from — and add an AI assistant that answers your customers 24/7.
 
-| Demo | Style | Highlights |
-|---|---|---|
-| [`projects/shawarma-ai`](projects/shawarma-ai/) | Bold street food | **AI chat assistant** (Google Gemini, free tier), streamed replies, menu filters |
-| [`projects/studio-sage`](projects/studio-sage/) | Calm, rounded, sage + beige | Design studio, soft cards, enquiry form |
-| [`projects/vet-clinic`](projects/vet-clinic/) | Friendly, green + beige | Vet clinic, SVG illustration, online booking with time slots |
-| [`projects/law-firm`](projects/law-firm/) | Navy + gold, serif | Law firm, animated counters, consultation form with consent |
-| [`projects/medical-consulting`](projects/medical-consulting/) | Clean white + teal | Healthcare consulting, KPI dashboard hero, case studies |
+## See it in action
 
-All businesses are fictional. Each demo has a fixed top bar with a DEMO label, "All projects" and previous/next links.
+Five demo sites for fictional businesses, each in its own style. All work on phones and switch between English, Polish and Russian.
 
-## Tech
+| Demo | What it shows |
+|---|---|
+| [Wrap Lab](https://artt-portfolio.vercel.app/projects/shawarma-ai/) — shawarma bar | **AI chat assistant** that answers questions about the menu, allergens and delivery |
+| [Sage & Linen](https://artt-portfolio.vercel.app/projects/studio-sage/) — design studio | Calm, soft design with a project enquiry form |
+| [Paws & Meadow](https://artt-portfolio.vercel.app/projects/vet-clinic/) — vet clinic | Friendly site with online booking by date and time |
+| [Aldermont Legal](https://artt-portfolio.vercel.app/projects/law-firm/) — law firm | Serious, trust-building design with a consultation form |
+| [Clarity Health](https://artt-portfolio.vercel.app/projects/medical-consulting/) — medical consulting | Clean B2B site with services, process and case studies |
 
-- Plain HTML, CSS and JavaScript — no build step.
-- `shared/i18n.js` — EN/PL switcher. Texts live in each page's `translations.js`.
-- `shared/common.js` — demo bar, mobile menu, scroll animations, counters, demo forms.
-- `api/chat.js` — Vercel serverless function for the AI chat. Uses the official `@google/genai` SDK (Gemini) and streams the answer. The site never names the model to visitors.
-- `api/contact.js` — delivers the home page contact form to your inbox via [Resend](https://resend.com).
-- Photos live in each demo's `img/` folder. Home page project covers are screenshots of each demo's first screen (`assets/covers/`); set `COVER_MODE = "photos"` in `assets/main.js` to use the photos instead.
-- `projects/shawarma-ai/menu.js` — one menu file used by the page, the demo answers and the AI system prompt.
+## What I can do for your business
 
-## Run locally
+- **Redesign** an outdated site so it looks modern and works on phones
+- **New website or landing page** — a landing page takes 2–3 days, 5 at most
+- **AI chat assistant** that knows your prices, hours and services and replies in your customers' language
+- **New features** for an existing site: online booking, forms, extra languages, Google Maps, basic SEO
 
-```bash
-npm install
-npm run dev
-```
+## Get in touch
 
-Open http://localhost:3000.
+Write to me through the form at the bottom of the [portfolio page](https://artt-portfolio.vercel.app/#contact) — I reply within 24 hours with ideas and a quote.
 
-Without API keys the chat runs in **demo mode** (keyword-based answers in EN/PL). To use real AI, copy `.env.example` to `.env` and add a key:
+---
 
-```bash
-GEMINI_API_KEY=...   # free key from https://aistudio.google.com/apikey
-```
-
-Optional settings:
-
-- `GEMINI_MODEL` — default `gemini-3.5-flash-lite` (fast, on the free tier). Free-tier prompts may be used by Google to improve its products — fine for a demo with a fictional menu.
-- Each visitor can send 15 messages per 10 minutes; history is capped at 12 messages to keep requests small.
-
-Keys stay on the server and are never sent to the browser. `.env` is in `.gitignore`.
-
-## Deploy (GitHub → Vercel)
-
-1. Push this repository to GitHub.
-2. On [vercel.com](https://vercel.com): **Add New → Project → Import** the repository. Framework preset: **Other**. No build command is needed. Click **Deploy**.
-3. For real AI answers: **Project → Settings → Environment Variables**, add `GEMINI_API_KEY`, then **Deployments → Redeploy**.
-4. For the contact form: create a free account at resend.com, create an API key and add `RESEND_API_KEY` and `CONTACT_TO_EMAIL` (your Resend account email) the same way, then redeploy. Until then the form shows an error, or opens the visitor's email app if you filled in `CONTACT.email`.
-
-After that, every `git push` to `main` deploys automatically.
-
-## Protection against abuse
-
-The repository is public, so nothing private lives in the code:
-
-- API keys and the inbox address (`CONTACT_TO_EMAIL`) exist only in Vercel's environment variables.
-- `/api/chat` and `/api/contact` only accept requests from this site's own pages, and are rate-limited
-  per visitor (chat: 15 messages / 10 min; form: 3 messages / hour) plus a daily cap for the whole site
-  (`CHAT_DAILY_LIMIT`, default 300; form: 50). Shared logic: `api/_guard.js`.
-- The chat's system prompt keeps the model on topic, history is capped at 12 messages and answers at 1,500 tokens.
-- The chat uses Gemini's free tier, which has no billing at all: when the free quota runs out the chat
-  simply switches to its built-in demo answers. Keep the Google AI Studio project on the free tier
-  (don't attach a billing account) so it can never cost money.
-
-## Personalise
-
-- Name and role: `owner` in [`assets/translations.js`](assets/translations.js) (currently **ArTT**).
-- Public email, Telegram and WhatsApp buttons: `CONTACT` at the top of [`assets/main.js`](assets/main.js). Empty values are hidden.
-- Package prices: `pricing.p1price` … `p3price` in [`assets/translations.js`](assets/translations.js).
+<sub>All businesses shown are fictional. Built with plain HTML, CSS and JavaScript, hosted on Vercel. Technical notes for developers: [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md).</sub>

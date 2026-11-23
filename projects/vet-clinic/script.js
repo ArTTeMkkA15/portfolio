@@ -20,7 +20,8 @@
     if (day === 0) {
       var closed = document.createElement("option");
       closed.value = "";
-      closed.textContent = document.documentElement.lang === "pl" ? "Niedziela — nieczynne" : "Sunday — closed";
+      var lang = document.documentElement.lang;
+      closed.textContent = lang === "pl" ? "Niedziela — nieczynne" : lang === "ru" ? "Воскресенье — выходной" : "Sunday — closed";
       time.appendChild(closed);
       return;
     }

@@ -94,6 +94,37 @@
       document.body.insertBefore(bar, document.body.firstChild);
     }
 
+    // Demo buttons ---------------------------------------------------------
+    // On demo pages, buttons that would act in the real world (call, email, open a
+    // sub-page...) are placeholders: they show a short note instead of doing anything.
+    // Mark extra ones with data-stub. Navigation inside the page keeps working.
+    if (!document.querySelector("[data-no-badge]")) {
+      var toastStyle = document.createElement("style");
+      toastStyle.textContent =
+        ".demo-toast{position:fixed;left:50%;bottom:24px;z-index:9200;max-width:min(440px,calc(100vw - 32px));transform:translate(-50%,16px);opacity:0;" +
+        "padding:12px 18px;border-radius:12px;background:#111;color:#fff;font:500 14px/1.45 system-ui,-apple-system,'Segoe UI',sans-serif;" +
+        "box-shadow:0 14px 34px rgba(0,0,0,.3);pointer-events:none;transition:opacity .25s,transform .25s;text-align:center}" +
+        ".demo-toast.is-shown{opacity:1;transform:translate(-50%,0)}";
+      document.head.appendChild(toastStyle);
+      var toast = document.createElement("div");
+      toast.className = "demo-toast";
+      toast.setAttribute("role", "status");
+      toast.setAttribute("aria-live", "polite");
+      document.body.appendChild(toast);
+      var toastTimer;
+      document.addEventListener("click", function (e) {
+        var el = e.target.closest && e.target.closest('a[href^="tel:"], a[href^="mailto:"], [data-stub]');
+        if (!el || el.closest(".demo-bar")) return;
+        e.preventDefault();
+        toast.textContent = t("_stub");
+        toast.classList.add("is-shown");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () {
+          toast.classList.remove("is-shown");
+        }, 3200);
+      });
+    }
+
     // Mobile nav ------------------------------------------------------------
     var toggle = document.querySelector("[data-nav-toggle]");
     if (toggle) {

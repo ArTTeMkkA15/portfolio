@@ -175,6 +175,9 @@ p { margin: 0 0 1em; }
   .logo { gap: 8px; }
   .logo svg { width: 30px; height: 30px; }
   .logo span { font-size: 1.15rem; letter-spacing: 0.1em; }
+  .lang { gap: 0; }
+  .lang span { display: none; }
+  .lang button { padding: 4px 5px; }
   .practice, .cases, .team, .row-2, .offices { grid-template-columns: 1fr; }
   .quote { padding: 44px 30px; }
 }
