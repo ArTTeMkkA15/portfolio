@@ -73,7 +73,7 @@ var COVER_MODE = "screens";
       button.disabled = true;
       setStatus(t("contact.sending"));
 
-      fetch("/api/contact", {
+      fetch("/api/contact/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

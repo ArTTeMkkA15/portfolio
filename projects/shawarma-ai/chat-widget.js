@@ -3,7 +3,7 @@
 // assistant isn't connected or its free quota is used up.
 import { demoReply } from "./demo-answers.js";
 
-const API_URL = "/api/chat";
+const API_URL = "/api/chat/"; // trailing slash: the site uses trailingSlash, avoids a redirect
 const MAX_HISTORY = 20;
 const t = (key) => (window.i18n ? window.i18n.t(key) : key);
 const lang = () => (window.i18n ? window.i18n.lang : "en");
