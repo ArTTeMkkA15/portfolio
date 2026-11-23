@@ -1,7 +1,7 @@
 // Chat assistant widget for Wrap Lab.
 // Talks to /api/chat (streamed). Falls back to built-in demo answers when the
 // assistant isn't connected or its free quota is used up.
-import { demoReply } from "./demo-answers.js";
+import { demoReply } from "./demo-answers.js?v=20261124";
 
 const API_URL = "/api/chat/"; // trailing slash: the site uses trailingSlash, avoids a redirect
 const MAX_HISTORY = 20;

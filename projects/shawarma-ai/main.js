@@ -1,6 +1,6 @@
 // Menu list + filters, rendered from menu.js so the page, the demo bot and the AI prompt never disagree.
-import { MENU, ALLERGEN_NAMES } from "./menu.js";
-import "./chat-widget.js";
+import { MENU, ALLERGEN_NAMES } from "./menu.js?v=20261124";
+import "./chat-widget.js?v=20261124";
 
 const list = document.querySelector("[data-menu-grid]");
 const filters = document.querySelector("[data-menu-filters]");

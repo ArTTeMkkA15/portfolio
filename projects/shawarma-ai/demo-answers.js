@@ -1,5 +1,5 @@
 // Demo mode: keyword-based answers (EN / PL / RU) used when the AI assistant isn't connected.
-import { MENU, RESTAURANT, COMBO, ALLERGEN_NAMES } from "./menu.js";
+import { MENU, RESTAURANT, COMBO, ALLERGEN_NAMES } from "./menu.js?v=20261124";
 
 const PL_HINT = /[ąćęłńóśźż]|\b(czy|jest|macie|ile|jak|gdzie|kiedy|dzień|cześć|hej|prosz|dzięk|polec|ostr|wegań|dostaw|otwar)/i;
 const RU_HINT = /[а-яё]/i;
