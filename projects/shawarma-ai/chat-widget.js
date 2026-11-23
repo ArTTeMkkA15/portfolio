@@ -1,5 +1,6 @@
-// AI chat widget for Wrap Lab.
-// Talks to /api/chat (Claude or OpenAI, streamed). Falls back to demo answers when no key is set.
+// Chat assistant widget for Wrap Lab.
+// Talks to /api/chat (streamed). Falls back to built-in demo answers when the
+// assistant isn't connected or its free quota is used up.
 import { demoReply } from "./demo-answers.js";
 
 const API_URL = "/api/chat";
@@ -11,8 +12,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const state = {
   open: false,
   busy: false,
-  provider: "claude",
-  live: { claude: false, openai: false },
+  live: false, // true when the server has a real AI assistant connected
   history: [], // { role, content } sent to the API
 };
 
@@ -30,16 +30,9 @@ root.innerHTML = `
         <strong data-i18n="chat.title">${t("chat.title")}</strong>
         <span class="chat-status"><i></i><span data-i18n="chat.online">${t("chat.online")}</span></span>
       </div>
+      <span class="chat-demo" hidden data-i18n-attr="title:chat.demoTip" title="${t("chat.demoTip")}"><span data-i18n="chat.demo">${t("chat.demo")}</span></span>
       <button class="chat-close" type="button" data-i18n-attr="aria-label:chat.close" aria-label="${t("chat.close")}">×</button>
     </header>
-    <div class="chat-toolbar">
-      <span class="chat-toolbar-label" data-i18n="chat.provider">${t("chat.provider")}</span>
-      <div class="chat-provider" role="radiogroup">
-        <button type="button" role="radio" data-provider="claude">Claude</button>
-        <button type="button" role="radio" data-provider="openai">ChatGPT</button>
-      </div>
-      <span class="chat-demo" hidden data-i18n-attr="title:chat.demoTip" title="${t("chat.demoTip")}"><span data-i18n="chat.demo">${t("chat.demo")}</span></span>
-    </div>
     <div class="chat-log" aria-live="polite"></div>
     <div class="chat-chips">
       <button type="button" data-i18n="chat.q1">${t("chat.q1")}</button>
@@ -82,16 +75,8 @@ function addTyping() {
   return el;
 }
 
-function renderProvider() {
-  // Once any real AI is connected, only show the providers that actually have a key.
-  const anyLive = state.live.claude || state.live.openai;
-  root.querySelectorAll("[data-provider]").forEach((btn) => {
-    const active = btn.dataset.provider === state.provider;
-    btn.classList.toggle("is-active", active);
-    btn.setAttribute("aria-checked", String(active));
-    btn.hidden = anyLive && !state.live[btn.dataset.provider];
-  });
-  demoBadge.hidden = state.live[state.provider];
+function renderMode() {
+  demoBadge.hidden = state.live;
 }
 
 function setOpen(open) {
@@ -105,14 +90,14 @@ function setOpen(open) {
   }
 }
 
-// Calls onText(fullTextSoFar) for every streamed chunk. Returns null in demo mode.
+// Calls onText(fullTextSoFar) for every streamed chunk. Returns null when the server says "use demo answers".
 async function streamFromApi(messages, onText) {
   const res = await fetch(API_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ provider: state.provider, messages }),
+    body: JSON.stringify({ messages }),
   });
-  if (res.status === 503) return null; // no key → demo mode
+  if (res.status === 503) return null;
   if (res.status === 429) {
     const note = await res.text(); // too many messages from this visitor
     onText(note);
@@ -144,7 +129,7 @@ async function send(text) {
   const typing = addTyping();
   let reply = null;
   try {
-    if (state.live[state.provider]) {
+    if (state.live) {
       const bubble = document.createElement("div");
       bubble.className = "msg msg-assistant";
       reply = await streamFromApi(state.history, (soFar) => {
@@ -153,10 +138,10 @@ async function send(text) {
         log.scrollTop = log.scrollHeight;
       });
       if (reply === null) {
-        state.live[state.provider] = false;
-        renderProvider();
+        state.live = false; // quota used up or not configured: continue with demo answers
+        renderMode();
       } else if (typing.isConnected) {
-        typing.replaceWith(bubble); // empty reply
+        typing.replaceWith(bubble);
       }
     }
     if (reply === null) {
@@ -191,12 +176,6 @@ document.addEventListener("click", (e) => {
   const q = opener.getAttribute("data-question-key");
   if (q) send(t(q));
 });
-root.querySelectorAll("[data-provider]").forEach((btn) =>
-  btn.addEventListener("click", () => {
-    state.provider = btn.dataset.provider;
-    renderProvider();
-  })
-);
 chips.addEventListener("click", (e) => {
   const btn = e.target.closest("button");
   if (btn) send(btn.textContent);
@@ -208,21 +187,14 @@ form.addEventListener("submit", (e) => {
   send(value);
 });
 
-// Ask the server which providers have keys configured.
+// Ask the server whether the real assistant is connected.
 (async () => {
   try {
     const res = await fetch(API_URL, { method: "GET" });
-    if (res.ok) {
-      const info = await res.json();
-      state.live = { claude: Boolean(info.claude), openai: Boolean(info.openai) };
-      state.provider = info.defaultProvider === "openai" ? "openai" : "claude";
-      if (!state.live[state.provider] && state.live.claude !== state.live.openai) {
-        state.provider = state.live.claude ? "claude" : "openai";
-      }
-    }
+    if (res.ok) state.live = Boolean((await res.json()).live);
   } catch {
     // Static hosting without the API: stay in demo mode.
   }
-  renderProvider();
+  renderMode();
 })();
-renderProvider();
+renderMode();
