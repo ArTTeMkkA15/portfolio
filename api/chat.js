@@ -1,6 +1,6 @@
 // Vercel serverless function: POST /api/chat
 // Body: { messages: [{ role: "user" | "assistant", content: string }] }
-// Streams the assistant's reply as plain text, using Google Gemini (free tier).
+// Returns the assistant's reply as plain text, using Google Gemini (free tier), with retries.
 //
 // Environment variables (Vercel → Project → Settings → Environment Variables):
 //   GEMINI_API_KEY    — key from https://aistudio.google.com/apikey
@@ -97,40 +97,42 @@ export default async function handler(req, res) {
 
   const { GoogleGenAI } = await import("@google/genai");
   const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+  const contents = messages.map((m) => ({ role: m.role === "assistant" ? "model" : "user", parts: [{ text: m.content }] }));
 
-  let started = false;
-  const write = (text) => {
-    if (!started) {
-      started = true;
-      res.statusCode = 200;
-      res.setHeader("Content-Type", "text/plain; charset=utf-8");
-      res.setHeader("Cache-Control", "no-store");
-      res.setHeader("X-Accel-Buffering", "no");
+  // The free tier is served last when Google is busy ("503 high demand").
+  // Answers are short, so we wait for the whole reply instead of streaming it, retry once,
+  // then try a backup free model. That way a visitor never sees a reply cut off mid-sentence.
+  const models = [process.env.GEMINI_MODEL || "gemini-3.5-flash-lite", "gemini-3.1-flash-lite"];
+  const retryable = (err) => [429, 500, 502, 503, 504].includes(Number(err?.status)) || !err?.status;
+  let reply = "";
+  outer: for (const model of [...new Set(models)]) {
+    for (let attempt = 0; attempt < 2; attempt++) {
+      try {
+        const response = await ai.models.generateContent({
+          model,
+          contents,
+          config: {
+            systemInstruction: SYSTEM_PROMPT,
+            maxOutputTokens: 800,
+            temperature: 0.6,
+            thinkingConfig: { thinkingLevel: "MINIMAL" }, // near-off thinking: fastest replies
+          },
+        });
+        reply = (response.text || "").trim();
+        if (reply) break outer;
+      } catch (err) {
+        console.error(`[chat] Gemini error (${model}, try ${attempt + 1}):`, err?.status, err?.message);
+        if (!retryable(err)) break outer;
+        await new Promise((r) => setTimeout(r, 700 * (attempt + 1)));
+      }
     }
-    res.write(text);
-  };
-
-  try {
-    const stream = await ai.models.generateContentStream({
-      model: process.env.GEMINI_MODEL || "gemini-3.5-flash-lite",
-      contents: messages.map((m) => ({ role: m.role === "assistant" ? "model" : "user", parts: [{ text: m.content }] })),
-      config: {
-        systemInstruction: SYSTEM_PROMPT,
-        maxOutputTokens: 800,
-        temperature: 0.6,
-        thinkingConfig: { thinkingLevel: "MINIMAL" }, // near-off thinking: fastest replies
-      },
-    });
-    for await (const chunk of stream) {
-      const text = chunk.text;
-      if (text) write(text);
-    }
-    if (!started) write("Sorry, I didn't catch that — could you ask again? / Nie zrozumiałem — możesz zapytać jeszcze raz?");
-  } catch (err) {
-    console.error("[chat] Gemini error:", err?.status, err?.message);
-    // Nothing sent yet (quota used up, key problem, outage): fall back to demo answers.
-    if (!started) return sendJson(res, 503, { demo: true, error: "Assistant temporarily unavailable." });
-    write("\n\nThe assistant is temporarily unavailable. Please try again shortly or call us.");
   }
-  res.end();
+
+  // Still nothing (quota used up, key problem, long outage): the widget switches to demo answers.
+  if (!reply) return sendJson(res, 503, { demo: true, error: "Assistant temporarily unavailable." });
+
+  res.statusCode = 200;
+  res.setHeader("Content-Type", "text/plain; charset=utf-8");
+  res.setHeader("Cache-Control", "no-store");
+  res.end(reply);
 }
