@@ -1,6 +1,6 @@
 /*
  * Shared behaviour for the demo landing pages:
- *  - portfolio navigation: top bar (all projects / prev / next) + floating "All projects" button
+ *  - portfolio navigation: fixed demo bar on top (all projects / DEMO label / prev / next)
  *    (data-home on the script tag = path to the portfolio root)
  *  - mobile navigation toggle:   <button data-nav-toggle>, closes on link click
  *  - reveal-on-scroll:           <section data-reveal>
@@ -24,7 +24,8 @@
   }
 
   ready(function () {
-    // Portfolio navigation: top bar + floating "back" button ----------------
+    // Portfolio navigation: fixed demo bar at the top of every demo page --------
+    // Always visible, so visitors know this is a portfolio demo and can get back.
     // Not shown on the portfolio itself or inside its live previews (iframes).
     var inFrame = window.self !== window.top;
     if (!inFrame && !document.querySelector("[data-no-badge]")) {
@@ -47,33 +48,35 @@
 
       var style = document.createElement("style");
       style.textContent =
-        ":root{--demo-bar-h:44px}" +
-        ".demo-bar{position:relative;z-index:9001;height:var(--demo-bar-h);display:flex;align-items:center;gap:12px;padding:0 16px;" +
-        "background:#111;color:#fff;font:500 13px/1.2 system-ui,-apple-system,'Segoe UI',sans-serif}" +
-        ".demo-bar a{color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;transition:background .2s;white-space:nowrap}" +
-        ".demo-bar a:hover{background:rgba(255,255,255,.12)}.demo-bar a:focus-visible{outline:2px solid #fff;outline-offset:2px}" +
-        ".demo-bar .db-home{background:rgba(255,255,255,.1);font-weight:600}" +
-        ".demo-bar .db-mid{flex:1;text-align:center;opacity:.7;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}" +
-        ".demo-bar .db-mid b{opacity:1;color:#fff;font-weight:600}" +
-        ".demo-bar .db-nav{display:flex;gap:4px}.demo-bar .db-nav a{min-width:40px;min-height:34px;justify-content:center;font-size:14px}" +
-        ".demo-bar .dot{width:8px;height:8px;border-radius:50%;background:#7CF29C;box-shadow:0 0 0 3px rgba(124,242,156,.25);flex:none}" +
-        ".demo-badge{position:fixed;left:16px;bottom:16px;z-index:9000;display:flex;align-items:center;gap:8px;" +
-        "padding:10px 16px;border-radius:999px;background:rgba(17,17,17,.88);color:#fff;font:600 13px/1.2 system-ui,-apple-system,'Segoe UI',sans-serif;" +
-        "box-shadow:0 8px 24px rgba(0,0,0,.25);backdrop-filter:blur(6px);text-decoration:none;" +
-        "opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .25s,transform .25s}" +
-        ".demo-badge.is-shown{opacity:1;transform:none;pointer-events:auto}.demo-badge:hover{background:#000}" +
-        ".demo-badge:focus-visible{outline:2px solid #fff;outline-offset:3px}" +
-        "@media (max-width:720px){.demo-bar .db-mid{display:none}.demo-bar{justify-content:space-between}}" +
-        "@media (max-width:420px){.demo-bar .db-label{display:none}}";
+        ":root{--demo-bar-h:48px}" +
+        // Make room for the fixed bar: push the page and the sites' sticky headers down.
+        "body{padding-top:var(--demo-bar-h)}.site-header{top:var(--demo-bar-h)}" +
+        "html{scroll-padding-top:calc(var(--demo-bar-h) + 80px)}" +
+        ".demo-bar{position:fixed;top:0;left:0;right:0;z-index:9050;height:var(--demo-bar-h);display:flex;align-items:center;gap:12px;padding:0 12px;" +
+        "background:#0d0d10;color:#fff;font:500 13px/1.2 system-ui,-apple-system,'Segoe UI',sans-serif;box-shadow:0 2px 14px rgba(0,0,0,.25)}" +
+        ".demo-bar a{color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:8px;border-radius:999px;white-space:nowrap}" +
+        ".demo-bar a:focus-visible{outline:2px solid #fff;outline-offset:2px}" +
+        ".demo-bar .db-home{padding:8px 16px 8px 12px;font-weight:700;font-size:13.5px;background:linear-gradient(110deg,#6d5bff,#c351e8 55%,#ff7a45);" +
+        "box-shadow:0 0 0 2px rgba(255,255,255,.14),0 6px 18px -6px rgba(195,81,232,.8);transition:transform .2s,box-shadow .2s}" +
+        ".demo-bar .db-home:hover{transform:translateY(-1px);box-shadow:0 0 0 2px rgba(255,255,255,.3),0 8px 22px -6px rgba(195,81,232,1)}" +
+        ".demo-bar .db-arrow{display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.22);font-size:13px}" +
+        ".demo-bar .db-chip{flex:none;font-weight:800;font-size:11px;letter-spacing:.12em;color:#111;background:#ffd84d;padding:4px 8px;border-radius:6px}" +
+        ".demo-bar .db-note{flex:1;min-width:0;opacity:.75;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}" +
+        ".demo-bar .db-note b{color:#fff;font-weight:600}" +
+        ".demo-bar .db-nav{display:flex;gap:4px;flex:none}" +
+        ".demo-bar .db-nav a{min-width:40px;min-height:34px;justify-content:center;padding:7px 12px;font-size:13px;transition:background .2s}" +
+        ".demo-bar .db-nav a:hover{background:rgba(255,255,255,.12)}" +
+        "@media (max-width:860px){.demo-bar .db-label{display:none}}" +
+        "@media (max-width:640px){.demo-bar .db-note{display:none}.demo-bar .db-chip{margin-right:auto}}";
       document.head.appendChild(style);
 
       var bar = document.createElement("nav");
       bar.className = "demo-bar";
       bar.setAttribute("aria-label", "Portfolio");
       var html =
-        '<a class="db-home" href="' + hub + '">← <span data-i18n="_allProjects">' + t("_allProjects") + "</span></a>" +
-        '<span class="db-mid"><span class="dot" aria-hidden="true" style="display:inline-block;vertical-align:middle;margin-right:8px"></span>' +
-        '<span data-i18n="_demo">' + t("_demo") + "</span>" +
+        '<a class="db-home" href="' + hub + '"><span class="db-arrow" aria-hidden="true">←</span><span data-i18n="_allProjects">' + t("_allProjects") + "</span></a>" +
+        '<span class="db-chip">DEMO</span>' +
+        '<span class="db-note"><span data-i18n="_demoNotice">' + t("_demoNotice") + "</span>" +
         (index !== -1 ? " · <b>" + esc(PROJECTS[index].name) + "</b>" : "") +
         "</span>";
       if (index !== -1) {
@@ -87,18 +90,6 @@
       }
       bar.innerHTML = html;
       document.body.insertBefore(bar, document.body.firstChild);
-
-      // Floating button appears once the top bar has scrolled out of view.
-      var badge = document.createElement("a");
-      badge.className = "demo-badge";
-      badge.href = hub;
-      badge.innerHTML = '← <span data-i18n="_allProjects">' + t("_allProjects") + "</span>";
-      document.body.appendChild(badge);
-      var onScroll = function () {
-        badge.classList.toggle("is-shown", window.scrollY > 400);
-      };
-      window.addEventListener("scroll", onScroll, { passive: true });
-      onScroll();
     }
 
     // Mobile nav ------------------------------------------------------------
