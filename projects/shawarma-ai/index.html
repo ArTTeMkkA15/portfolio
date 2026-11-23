@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="meta.title">Wrap Lab — shawarma with an AI assistant</title>
+  <meta name="description" content="Shawarma restaurant landing page with an AI chat assistant powered by Claude or ChatGPT. Portfolio demo." />
+  <meta property="og:title" content="Wrap Lab — shawarma with an AI assistant" />
+  <meta name="theme-color" content="#1E1A17" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23F4A300'/%3E%3Ctext x='16' y='22' font-size='17' text-anchor='middle'%3E%F0%9F%8C%AF%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="chat.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-row">
+      <a class="logo" href="#top"><span class="logo-mark" aria-hidden="true">🌯</span>WRAP<b>LAB</b></a>
+      <nav aria-label="Main">
+        <a href="#menu" data-i18n="nav.menu">Menu</a>
+        <a href="#ai" data-i18n="nav.ai">AI assistant</a>
+        <a href="#visit" data-i18n="nav.visit">Visit us</a>
+      </nav>
+      <div class="header-actions">
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" data-set-lang="en">EN</button><button type="button" data-set-lang="pl">PL</button>
+        </div>
+        <a class="btn btn-small" href="tel:+48000000000" data-i18n="nav.order">Order: +48 000 000 000</a>
+        <button class="burger" type="button" data-nav-toggle aria-expanded="false" aria-label="Menu"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div>
+          <p class="tag" data-i18n="hero.tag">Kraków · open till 2 AM on weekends</p>
+          <h1 data-i18n="hero.title">Shawarma, <span>done properly.</span></h1>
+          <p class="lead" data-i18n="hero.lead"></p>
+          <div class="hero-cta">
+            <a class="btn" href="#menu" data-i18n="hero.menu">See the menu</a>
+            <a class="btn btn-outline" href="#ai" data-open-chat><span aria-hidden="true">🤖</span> <span data-i18n="hero.ask">Ask our AI</span></a>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="sun"></div>
+          <svg viewBox="0 0 360 360" class="wrap">
+            <g transform="rotate(-18 180 180)">
+              <path d="M110 60 L250 60 L235 320 Q180 345 125 320Z" fill="#F3D9A4"/>
+              <path d="M110 60 L250 60 L245 120 Q180 140 115 120Z" fill="#E9C07A"/>
+              <g>
+                <circle cx="140" cy="62" r="20" fill="#5FA36B"/><circle cx="170" cy="50" r="22" fill="#E3472B"/>
+                <circle cx="200" cy="58" r="20" fill="#B5652E"/><circle cx="228" cy="54" r="18" fill="#5FA36B"/>
+                <circle cx="155" cy="40" r="14" fill="#FFF4E2"/><circle cx="215" cy="38" r="13" fill="#8C4A22"/>
+              </g>
+              <path d="M125 160 Q180 175 238 160 M128 210 Q180 225 236 210 M131 260 Q180 275 233 260" stroke="#E2B970" stroke-width="5" fill="none" stroke-linecap="round"/>
+              <rect x="118" y="230" width="124" height="96" rx="8" fill="#E3472B"/>
+              <text x="180" y="290" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="22" fill="#FFF4E2">WRAP LAB</text>
+            </g>
+          </svg>
+          <div class="sticker s1" data-i18n="hero.sticker1">🔥 Harissa Fire</div>
+          <div class="sticker s2" data-i18n="hero.sticker2">Fresh pita<br>every morning</div>
+        </div>
+      </div>
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker-track">
+          <span>SHAWARMA ✦ FALAFEL ✦ HALLOUMI ✦ HARISSA ✦ HUMMUS ✦ LAB BOX ✦ </span><span>SHAWARMA ✦ FALAFEL ✦ HALLOUMI ✦ HARISSA ✦ HUMMUS ✦ LAB BOX ✦ </span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section ai" id="ai">
+      <div class="container ai-grid">
+        <div data-reveal>
+          <p class="eyebrow" data-i18n="ai.eyebrow">New · AI assistant</p>
+          <h2 data-i18n="ai.title">Questions about allergens, spice or delivery? <span>Just ask.</span></h2>
+          <p class="lead" data-i18n="ai.lead"></p>
+          <ul class="features">
+            <li data-i18n="ai.f1"></li><li data-i18n="ai.f2"></li><li data-i18n="ai.f3"></li><li data-i18n="ai.f4"></li>
+          </ul>
+          <button class="btn" type="button" data-open-chat data-i18n="ai.try">Try the assistant</button>
+          <p class="note" data-i18n="ai.note"></p>
+        </div>
+        <div class="phone" data-reveal aria-hidden="true">
+          <div class="phone-head"><span>🤖</span><strong data-i18n="chat.title">Wrap Lab assistant</strong></div>
+          <div class="phone-body">
+            <p class="bubble user" data-i18n="ai.sampleQ"></p>
+            <p class="bubble bot" data-i18n="ai.sampleA"></p>
+            <p class="bubble bot typing"><i></i><i></i><i></i></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="menu">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow" data-i18n="menu.eyebrow">Menu</p>
+          <h2 data-i18n="menu.title">Everything is made in-house</h2>
+        </div>
+        <div class="filters" data-menu-filters role="toolbar">
+          <button type="button" class="is-active" data-filter="all" data-i18n="menu.all">All</button>
+          <button type="button" data-filter="wraps" data-i18n="menu.wraps">Wraps</button>
+          <button type="button" data-filter="plates" data-i18n="menu.plates">Plates &amp; boxes</button>
+          <button type="button" data-filter="sides" data-i18n="menu.sides">Sides</button>
+          <button type="button" data-filter="drinks" data-i18n="menu.drinks">Drinks</button>
+          <button type="button" data-filter="spicy" data-i18n="menu.spicy">🔥 Spicy</button>
+          <button type="button" data-filter="vegan" data-i18n="menu.vegan">🌱 Vegan</button>
+        </div>
+        <div class="menu-grid" data-menu-grid aria-live="polite"></div>
+
+        <div class="combo" data-reveal>
+          <div><h3 data-i18n="combo.title">Lab Combo</h3><p data-i18n="combo.text"></p></div>
+          <button class="btn btn-dark" type="button" data-open-chat data-i18n="combo.cta">Ask about combos</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section visit" id="visit">
+      <div class="container visit-grid">
+        <div data-reveal>
+          <p class="eyebrow" data-i18n="visit.eyebrow">Visit us</p>
+          <h2 data-i18n="visit.title">Come hungry</h2>
+          <div class="info">
+            <div><h3 data-i18n="visit.hoursT"></h3><p data-i18n="visit.hours"></p></div>
+            <div><h3 data-i18n="visit.deliveryT"></h3><p data-i18n="visit.delivery"></p></div>
+            <div><h3 data-i18n="visit.addressT"></h3><p data-i18n="visit.address"></p></div>
+            <div><h3 data-i18n="visit.payT"></h3><p data-i18n="visit.pay"></p></div>
+          </div>
+        </div>
+        <div class="map" data-reveal aria-hidden="true">
+          <svg viewBox="0 0 400 320">
+            <rect width="400" height="320" fill="#2A2420"/>
+            <path d="M0 210 C90 190 140 240 230 200 S360 150 400 170 L400 240 C330 230 280 270 200 260 S60 250 0 270Z" fill="#2F5D74" opacity=".55"/>
+            <g stroke="#4A403A" stroke-width="14" stroke-linecap="round"><path d="M-10 80 L410 120"/><path d="M120 -10 L160 330"/><path d="M290 -10 L250 330"/></g>
+            <g stroke="#3A322D" stroke-width="7"><path d="M-10 30 L410 50"/><path d="M40 -10 L60 330"/><path d="M350 -10 L340 330"/><path d="M-10 150 L410 170"/></g>
+            <rect x="180" y="30" width="60" height="40" rx="4" fill="#3E5A3A"/>
+            <g transform="translate(205 128)"><circle r="34" fill="#F4A300" opacity=".25"><animate attributeName="r" values="20;40;20" dur="2.4s" repeatCount="indefinite"/></circle><path d="M0 18 C-16 0 -16 -22 0 -22 C16 -22 16 0 0 18Z" fill="#E3472B"/><circle cy="-8" r="6" fill="#FFF4E2"/></g>
+          </svg>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-row">
+      <a class="logo" href="#top"><span class="logo-mark" aria-hidden="true">🌯</span>WRAP<b>LAB</b></a>
+      <p>© 2026 Wrap Lab · <span data-i18n="footer.rights"></span></p>
+    </div>
+  </footer>
+
+  <script src="translations.js"></script>
+  <script src="../../shared/i18n.js"></script>
+  <script src="../../shared/common.js" data-home="../../"></script>
+  <script type="module" src="main.js"></script>
+</body>
+</html>

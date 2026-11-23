@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="meta.title">Clarity Health Advisory — healthcare consulting</title>
+  <meta name="description" content="Healthcare management consulting: accreditation, patient flow, compliance and digital transformation. Portfolio demo." />
+  <meta property="og:title" content="Clarity Health Advisory — healthcare consulting" />
+  <meta name="theme-color" content="#0E9AA7" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%230E9AA7'/%3E%3Cpath d='M13 7h6v6h6v6h-6v6h-6v-6H7v-6h6z' fill='%23fff'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-row">
+      <a class="logo" href="#top">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="currentColor"/><path d="M13 7h6v6h6v6h-6v6h-6v-6H7v-6h6z" fill="#fff"/></svg>
+        <span>Clarity<b>Health</b></span>
+      </a>
+      <nav aria-label="Main">
+        <a href="#services" data-i18n="nav.services">Services</a>
+        <a href="#sectors" data-i18n="nav.sectors">Who we help</a>
+        <a href="#process" data-i18n="nav.process">Approach</a>
+        <a href="#cases" data-i18n="nav.cases">Case studies</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" data-set-lang="en">EN</button><button type="button" data-set-lang="pl">PL</button>
+        </div>
+        <a class="btn btn-small" href="#contact" data-i18n="nav.cta">Book a call</a>
+        <button class="burger" type="button" data-nav-toggle aria-expanded="false" aria-label="Menu"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow" data-i18n="hero.eyebrow">Healthcare management consulting</p>
+          <h1 data-i18n="hero.title">Better-run clinics. <span>Healthier patients.</span></h1>
+          <p class="lead" data-i18n="hero.lead"></p>
+          <div class="hero-cta">
+            <a class="btn" href="#contact" data-i18n="hero.primary">Book a free 20-min call</a>
+            <a class="btn btn-light" href="#cases" data-i18n="hero.secondary">See case studies</a>
+          </div>
+          <ul class="ticks">
+            <li data-i18n="hero.t1"></li><li data-i18n="hero.t2"></li><li data-i18n="hero.t3"></li>
+          </ul>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="dash">
+            <div class="dash-top"><i></i><i></i><i></i></div>
+            <div class="dash-body">
+              <div class="kpi-row">
+                <div class="kpi"><span data-i18n="hero.card1">Patient wait time</span><strong data-i18n="hero.card1v">−38%</strong></div>
+                <div class="kpi"><span data-i18n="hero.card3">NPS score</span><strong>72</strong></div>
+              </div>
+              <svg viewBox="0 0 300 120" class="chart">
+                <defs><linearGradient id="g" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#0E9AA7" stop-opacity=".35"/><stop offset="1" stop-color="#0E9AA7" stop-opacity="0"/></linearGradient></defs>
+                <path d="M0 95 L30 88 L60 92 L90 70 L120 74 L150 55 L180 58 L210 38 L240 42 L270 22 L300 18 L300 120 L0 120Z" fill="url(#g)"/>
+                <path class="line" d="M0 95 L30 88 L60 92 L90 70 L120 74 L150 55 L180 58 L210 38 L240 42 L270 22 L300 18" fill="none" stroke="#0E9AA7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <div class="bars"><i style="--h:40%"></i><i style="--h:55%"></i><i style="--h:48%"></i><i style="--h:70%"></i><i style="--h:62%"></i><i style="--h:85%"></i><i style="--h:78%"></i></div>
+            </div>
+          </div>
+          <div class="float f1"><span class="dot ok"></span><div><small data-i18n="hero.card2">Accreditation</small><strong data-i18n="hero.card2v">Passed</strong></div></div>
+          <div class="float f2"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow" data-i18n="services.eyebrow">Services</p>
+          <h2 data-i18n="services.title">Consulting built around patient care</h2>
+        </div>
+        <div class="services">
+          <article class="service" data-reveal><div class="ico"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg></div><h3 data-i18n="services.s1t"></h3><p data-i18n="services.s1d"></p></article>
+          <article class="service" data-reveal><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3 data-i18n="services.s2t"></h3><p data-i18n="services.s2d"></p></article>
+          <article class="service" data-reveal><div class="ico"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div><h3 data-i18n="services.s3t"></h3><p data-i18n="services.s3d"></p></article>
+          <article class="service" data-reveal><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></div><h3 data-i18n="services.s4t"></h3><p data-i18n="services.s4d"></p></article>
+          <article class="service" data-reveal><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16"/><path d="M8 15l4-4 3 3 5-6"/></svg></div><h3 data-i18n="services.s5t"></h3><p data-i18n="services.s5d"></p></article>
+          <article class="service" data-reveal><div class="ico"><svg viewBox="0 0 24 24"><path d="M5 19l14-14"/><path d="M9 5h10v10"/></svg></div><h3 data-i18n="services.s6t"></h3><p data-i18n="services.s6d"></p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section sectors" id="sectors">
+      <div class="container">
+        <div class="section-head center" data-reveal>
+          <p class="eyebrow" data-i18n="sectors.eyebrow">Who we help</p>
+          <h2 data-i18n="sectors.title">Specialist knowledge for every type of provider</h2>
+        </div>
+        <ul class="chips" data-reveal>
+          <li>🏥 <span data-i18n="sectors.a"></span></li><li>🏨 <span data-i18n="sectors.b"></span></li><li>🦷 <span data-i18n="sectors.c"></span></li>
+          <li>🧪 <span data-i18n="sectors.d"></span></li><li>🦿 <span data-i18n="sectors.e"></span></li><li>🚀 <span data-i18n="sectors.f"></span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="process">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow" data-i18n="process.eyebrow">Our approach</p>
+          <h2 data-i18n="process.title">Diagnosis first, then treatment</h2>
+        </div>
+        <ol class="timeline">
+          <li data-reveal><span>1</span><h3 data-i18n="process.p1t"></h3><p data-i18n="process.p1d"></p></li>
+          <li data-reveal><span>2</span><h3 data-i18n="process.p2t"></h3><p data-i18n="process.p2d"></p></li>
+          <li data-reveal><span>3</span><h3 data-i18n="process.p3t"></h3><p data-i18n="process.p3d"></p></li>
+          <li data-reveal><span>4</span><h3 data-i18n="process.p4t"></h3><p data-i18n="process.p4d"></p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section cases-section" id="cases">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow" data-i18n="cases.eyebrow">Case studies</p>
+          <h2 data-i18n="cases.title">Measurable results in months, not years</h2>
+        </div>
+        <div class="cases">
+          <article class="case" data-reveal>
+            <p class="kind" data-i18n="cases.c1k"></p><h3 data-i18n="cases.c1t"></h3>
+            <div class="metrics"><div><strong data-i18n="cases.c1m1"></strong><span data-i18n="cases.c1m1l"></span></div><div><strong data-i18n="cases.c1m2"></strong><span data-i18n="cases.c1m2l"></span></div></div>
+          </article>
+          <article class="case" data-reveal>
+            <p class="kind" data-i18n="cases.c2k"></p><h3 data-i18n="cases.c2t"></h3>
+            <div class="metrics"><div><strong data-i18n="cases.c2m1"></strong><span data-i18n="cases.c2m1l"></span></div><div><strong data-i18n="cases.c2m2"></strong><span data-i18n="cases.c2m2l"></span></div></div>
+          </article>
+          <article class="case" data-reveal>
+            <p class="kind" data-i18n="cases.c3k"></p><h3 data-i18n="cases.c3t"></h3>
+            <div class="metrics"><div><strong data-i18n="cases.c3m1"></strong><span data-i18n="cases.c3m1l"></span></div><div><strong data-i18n="cases.c3m2"></strong><span data-i18n="cases.c3m2l"></span></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust" data-reveal>
+      <div class="container trust-box">
+        <div>
+          <h2 data-i18n="trust.title">Trusted, certified, confidential</h2>
+          <p data-i18n="trust.lead"></p>
+        </div>
+        <ul>
+          <li data-i18n="trust.b1"></li><li data-i18n="trust.b2"></li><li data-i18n="trust.b3"></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container contact-grid">
+        <div data-reveal>
+          <p class="eyebrow" data-i18n="contact.eyebrow">Contact</p>
+          <h2 data-i18n="contact.title">Let's talk about your facility</h2>
+          <p class="lead" data-i18n="contact.lead"></p>
+          <p class="direct"><span data-i18n="contact.direct">Prefer email?</span> <a href="mailto:hello@example.com" data-i18n="contact.directMail">hello@example.com</a></p>
+        </div>
+        <form class="form" data-demo-form data-reveal>
+          <div class="row-2">
+            <label><span data-i18n="contact.name">Full name</span><input name="name" required autocomplete="name" /></label>
+            <label><span data-i18n="contact.org">Organisation</span><input name="org" required autocomplete="organization" /></label>
+          </div>
+          <div class="row-2">
+            <label><span data-i18n="contact.email">Work email</span><input type="email" name="email" required autocomplete="email" /></label>
+            <label><span data-i18n="contact.phone">Phone</span><input type="tel" name="phone" autocomplete="tel" /></label>
+          </div>
+          <label><span data-i18n="contact.type">Type of facility</span>
+            <select name="type" required>
+              <option value="" data-i18n="contact.typeOpt0">Select…</option>
+              <option data-i18n="sectors.a"></option><option data-i18n="sectors.b"></option><option data-i18n="sectors.c"></option>
+              <option data-i18n="sectors.d"></option><option data-i18n="sectors.e"></option><option data-i18n="sectors.f"></option>
+            </select>
+          </label>
+          <label><span data-i18n="contact.topic">What would you like to improve?</span><textarea name="topic" rows="4" required></textarea></label>
+          <button class="btn" type="submit" data-i18n="contact.send">Book my free call</button>
+          <p class="form-status" data-form-status role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-row">
+      <a class="logo" href="#top"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="currentColor"/><path d="M13 7h6v6h6v6h-6v6h-6v-6H7v-6h6z" fill="#fff"/></svg><span>Clarity<b>Health</b></span></a>
+      <p>© 2026 Clarity Health Advisory · <span data-i18n="footer.rights"></span></p>
+    </div>
+  </footer>
+
+  <script src="translations.js"></script>
+  <script src="../../shared/i18n.js"></script>
+  <script src="../../shared/common.js" data-home="../../"></script>
+</body>
+</html>
