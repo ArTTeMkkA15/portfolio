@@ -21,12 +21,18 @@
     en: {
       _demo: "Demo project",
       _back: "Back to portfolio",
+      _allProjects: "All projects",
+      _prev: "Previous",
+      _next: "Next project",
       _formSent: "Thank you! This is a demo form, so nothing was sent — but on a real site your message would land in the owner's inbox.",
       _formInvalid: "Please fill in the required fields.",
     },
     pl: {
       _demo: "Projekt demonstracyjny",
       _back: "Wróć do portfolio",
+      _allProjects: "Wszystkie projekty",
+      _prev: "Poprzedni",
+      _next: "Następny projekt",
       _formSent: "Dziękujemy! To formularz demonstracyjny, więc nic nie zostało wysłane — na prawdziwej stronie wiadomość trafiłaby do skrzynki właściciela.",
       _formInvalid: "Uzupełnij wymagane pola.",
     },

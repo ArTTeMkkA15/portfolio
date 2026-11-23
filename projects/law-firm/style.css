@@ -36,7 +36,7 @@ p { margin: 0 0 1em; }
 .btn-small { padding: 11px 18px; font-size: 0.72rem; }
 
 /* Header */
-.site-header { position: absolute; inset: 0 0 auto; z-index: 50; color: var(--ivory); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+.site-header { position: absolute; inset: var(--demo-bar-h, 0px) 0 auto; z-index: 50; color: var(--ivory); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
 .header-row { display: flex; align-items: center; gap: 30px; height: 88px; }
 .logo { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: var(--gold); }
 .logo svg { width: 38px; height: 38px; }

@@ -1,6 +1,7 @@
 /*
  * Shared behaviour for the demo landing pages:
- *  - "Demo project / back to portfolio" badge (data-home on the script tag = path to the portfolio root)
+ *  - portfolio navigation: top bar (all projects / prev / next) + floating "All projects" button
+ *    (data-home on the script tag = path to the portfolio root)
  *  - mobile navigation toggle:   <button data-nav-toggle>, closes on link click
  *  - reveal-on-scroll:           <section data-reveal>
  *  - animated counters:          <span data-count="250" data-suffix="+">0</span>
@@ -23,30 +24,81 @@
   }
 
   ready(function () {
-    // Badge -----------------------------------------------------------------
-    // No badge inside the portfolio's live previews (iframes).
+    // Portfolio navigation: top bar + floating "back" button ----------------
+    // Not shown on the portfolio itself or inside its live previews (iframes).
     var inFrame = window.self !== window.top;
     if (!inFrame && !document.querySelector("[data-no-badge]")) {
+      // Same order as the project grid on the portfolio home page.
+      var PROJECTS = [
+        { slug: "shawarma-ai", name: "Wrap Lab" },
+        { slug: "studio-sage", name: "Sage & Linen" },
+        { slug: "vet-clinic", name: "Paws & Meadow" },
+        { slug: "law-firm", name: "Aldermont Legal" },
+        { slug: "medical-consulting", name: "Clarity Health" },
+      ];
+      var hub = home + "#work";
+      var index = -1;
+      PROJECTS.forEach(function (p, i) {
+        if (location.pathname.indexOf("/" + p.slug + "/") !== -1) index = i;
+      });
+      var esc = function (s) {
+        return s.replace(/&/g, "&amp;");
+      };
+
       var style = document.createElement("style");
       style.textContent =
-        ".demo-badge{position:fixed;left:16px;bottom:16px;z-index:9000;display:flex;align-items:center;gap:10px;" +
-        "padding:8px 14px 8px 10px;border-radius:999px;background:rgba(17,17,17,.86);color:#fff;font:500 13px/1.2 system-ui,-apple-system,'Segoe UI',sans-serif;" +
-        "box-shadow:0 8px 24px rgba(0,0,0,.25);backdrop-filter:blur(6px);text-decoration:none;transition:transform .2s}" +
-        ".demo-badge:hover{transform:translateY(-2px)}.demo-badge:focus-visible{outline:2px solid #fff;outline-offset:3px}" +
-        ".demo-badge .dot{width:8px;height:8px;border-radius:50%;background:#7CF29C;box-shadow:0 0 0 3px rgba(124,242,156,.25)}" +
-        ".demo-badge .sep{opacity:.45}@media (max-width:560px){.demo-badge .lbl{display:none}.demo-badge .sep{display:none}}";
+        ":root{--demo-bar-h:44px}" +
+        ".demo-bar{position:relative;z-index:9001;height:var(--demo-bar-h);display:flex;align-items:center;gap:12px;padding:0 16px;" +
+        "background:#111;color:#fff;font:500 13px/1.2 system-ui,-apple-system,'Segoe UI',sans-serif}" +
+        ".demo-bar a{color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;transition:background .2s;white-space:nowrap}" +
+        ".demo-bar a:hover{background:rgba(255,255,255,.12)}.demo-bar a:focus-visible{outline:2px solid #fff;outline-offset:2px}" +
+        ".demo-bar .db-home{background:rgba(255,255,255,.1);font-weight:600}" +
+        ".demo-bar .db-mid{flex:1;text-align:center;opacity:.7;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}" +
+        ".demo-bar .db-mid b{opacity:1;color:#fff;font-weight:600}" +
+        ".demo-bar .db-nav{display:flex;gap:4px}.demo-bar .db-nav a{min-width:40px;min-height:34px;justify-content:center;font-size:14px}" +
+        ".demo-bar .dot{width:8px;height:8px;border-radius:50%;background:#7CF29C;box-shadow:0 0 0 3px rgba(124,242,156,.25);flex:none}" +
+        ".demo-badge{position:fixed;left:16px;bottom:16px;z-index:9000;display:flex;align-items:center;gap:8px;" +
+        "padding:10px 16px;border-radius:999px;background:rgba(17,17,17,.88);color:#fff;font:600 13px/1.2 system-ui,-apple-system,'Segoe UI',sans-serif;" +
+        "box-shadow:0 8px 24px rgba(0,0,0,.25);backdrop-filter:blur(6px);text-decoration:none;" +
+        "opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .25s,transform .25s}" +
+        ".demo-badge.is-shown{opacity:1;transform:none;pointer-events:auto}.demo-badge:hover{background:#000}" +
+        ".demo-badge:focus-visible{outline:2px solid #fff;outline-offset:3px}" +
+        "@media (max-width:720px){.demo-bar .db-mid{display:none}.demo-bar{justify-content:space-between}}" +
+        "@media (max-width:420px){.demo-bar .db-label{display:none}}";
       document.head.appendChild(style);
 
+      var bar = document.createElement("nav");
+      bar.className = "demo-bar";
+      bar.setAttribute("aria-label", "Portfolio");
+      var html =
+        '<a class="db-home" href="' + hub + '">← <span data-i18n="_allProjects">' + t("_allProjects") + "</span></a>" +
+        '<span class="db-mid"><span class="dot" aria-hidden="true" style="display:inline-block;vertical-align:middle;margin-right:8px"></span>' +
+        '<span data-i18n="_demo">' + t("_demo") + "</span>" +
+        (index !== -1 ? " · <b>" + esc(PROJECTS[index].name) + "</b>" : "") +
+        "</span>";
+      if (index !== -1) {
+        var prev = PROJECTS[(index - 1 + PROJECTS.length) % PROJECTS.length];
+        var next = PROJECTS[(index + 1) % PROJECTS.length];
+        html +=
+          '<span class="db-nav">' +
+          '<a href="' + home + "projects/" + prev.slug + '/" title="' + esc(prev.name) + '">‹ <span class="db-label" data-i18n="_prev">' + t("_prev") + "</span></a>" +
+          '<a href="' + home + "projects/" + next.slug + '/" title="' + esc(next.name) + '"><span class="db-label" data-i18n="_next">' + t("_next") + "</span> ›</a>" +
+          "</span>";
+      }
+      bar.innerHTML = html;
+      document.body.insertBefore(bar, document.body.firstChild);
+
+      // Floating button appears once the top bar has scrolled out of view.
       var badge = document.createElement("a");
       badge.className = "demo-badge";
-      badge.href = home;
-      badge.innerHTML =
-        '<span class="dot" aria-hidden="true"></span><span class="lbl" data-i18n="_demo">' +
-        t("_demo") +
-        '</span><span class="sep" aria-hidden="true">·</span><span>← <span data-i18n="_back">' +
-        t("_back") +
-        "</span></span>";
+      badge.href = hub;
+      badge.innerHTML = '← <span data-i18n="_allProjects">' + t("_allProjects") + "</span>";
       document.body.appendChild(badge);
+      var onScroll = function () {
+        badge.classList.toggle("is-shown", window.scrollY > 400);
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
     }
 
     // Mobile nav ------------------------------------------------------------
