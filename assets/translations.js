@@ -43,7 +43,7 @@ window.I18N = {
       p3n: "AI+", p3d: "Business package plus an AI assistant trained on your info.", p3f: "Everything in Business|AI chat (Claude or ChatGPT)|Custom knowledge: menu, prices, FAQ|1 month of tuning & support",
       popular: "Most popular",
       cta: "Ask about this package",
-      p1price: "1 200 zł", p2price: "2 500 zł", p3price: "3 900 zł",
+      p1price: "850 zł", p2price: "1 750 zł", p3price: "2 750 zł",
     },
     ai: {
       eyebrow: "AI for small business",
@@ -122,7 +122,7 @@ window.I18N = {
       p3n: "AI+", p3d: "Pakiet Business plus asystent AI nauczony informacji o Twojej firmie.", p3f: "Wszystko z pakietu Business|Czat AI (Claude lub ChatGPT)|Własna wiedza: menu, ceny, FAQ|Miesiąc dostrajania i wsparcia",
       popular: "Najczęściej wybierany",
       cta: "Zapytaj o ten pakiet",
-      p1price: "1 200 zł", p2price: "2 500 zł", p3price: "3 900 zł",
+      p1price: "850 zł", p2price: "1 750 zł", p3price: "2 750 zł",
     },
     ai: {
       eyebrow: "AI dla małych firm",
