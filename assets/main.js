@@ -8,8 +8,22 @@ var CONTACT = {
   whatsapp: "", // country code + number, digits only, e.g. "48500100200"
 };
 
+// Project covers on the home page:
+//   "screens" — screenshot of each demo's first screen (assets/covers/*.webp)
+//   "photos"  — the hero photo used inside each demo
+var COVER_MODE = "screens";
+
 (function () {
   "use strict";
+
+  if (COVER_MODE === "photos") {
+    document.querySelectorAll(".cover img[data-photo]").forEach(function (img) {
+      img.src = img.getAttribute("data-photo");
+      img.style.objectPosition = img.getAttribute("data-photo-pos") || "";
+    });
+    document.documentElement.classList.add("covers-photos");
+  }
+
   var t = function (k) {
     return window.i18n ? window.i18n.t(k) : k;
   };

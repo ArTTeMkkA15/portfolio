@@ -19,7 +19,7 @@ All businesses are fictional. Each demo has a fixed top bar with a DEMO label, "
 - `shared/common.js` — demo bar, mobile menu, scroll animations, counters, demo forms.
 - `api/chat.js` — Vercel serverless function for the AI chat. Uses the official `@anthropic-ai/sdk` and `openai` packages and streams the answer.
 - `api/contact.js` — delivers the home page contact form to your inbox via [Resend](https://resend.com).
-- Photos live in each demo's `img/` folder; the home page uses them as project covers.
+- Photos live in each demo's `img/` folder. Home page project covers are screenshots of each demo's first screen (`assets/covers/`); set `COVER_MODE = "photos"` in `assets/main.js` to use the photos instead.
 - `projects/shawarma-ai/menu.js` — one menu file used by the page, the demo answers and the AI system prompt.
 
 ## Run locally

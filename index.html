@@ -43,12 +43,12 @@
     <section class="hero" id="top">
       <div class="container">
         <p class="badge"><span class="dot"></span><span data-i18n="hero.badge">Available for new projects</span></p>
-        <h1 data-i18n="hero.title">Websites that bring clients — <em>with AI built in</em></h1>
+        <h1 data-i18n="hero.title">Websites that sell. <em>AI that works.</em></h1>
         <div class="hero-bottom">
           <p class="lead" data-i18n="hero.lead"></p>
           <div class="hero-cta">
-            <a class="btn" href="#work" data-i18n="hero.primary">See my projects</a>
-            <a class="btn btn-ghost" href="#contact" data-i18n="hero.secondary">Get a free quote</a>
+            <a class="btn btn-accent" href="#contact" data-i18n="hero.primary">Fix my website</a>
+            <a class="btn btn-ghost" href="#work" data-i18n="hero.secondary">See the work</a>
           </div>
         </div>
         <dl class="hero-stats">
@@ -59,19 +59,35 @@
       </div>
     </section>
 
+    <!-- Problems -> fixes -->
+    <section class="problems" id="fix">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow" data-i18n="problems.eyebrow">What I fix</p>
+          <h2 data-i18n="problems.title">Your website should be your best salesperson. <em>Most are your worst.</em></h2>
+        </div>
+        <ol class="fixes">
+          <li data-reveal><span class="n">01</span><p class="problem" data-i18n="problems.p1"></p><p class="fix" data-i18n="problems.f1"></p></li>
+          <li data-reveal><span class="n">02</span><p class="problem" data-i18n="problems.p2"></p><p class="fix" data-i18n="problems.f2"></p></li>
+          <li data-reveal><span class="n">03</span><p class="problem" data-i18n="problems.p3"></p><p class="fix" data-i18n="problems.f3"></p></li>
+          <li data-reveal><span class="n">04</span><p class="problem" data-i18n="problems.p4"></p><p class="fix" data-i18n="problems.f4"></p></li>
+        </ol>
+      </div>
+    </section>
+
     <!-- Projects -->
     <section class="section" id="work">
       <div class="container">
         <div class="section-head" data-reveal>
           <p class="eyebrow" data-i18n="work.eyebrow">Selected projects</p>
-          <h2 data-i18n="work.title">Five demos, five different styles</h2>
+          <h2 data-i18n="work.title">Five businesses. Five different faces.</h2>
           <p class="lead" data-i18n="work.lead"></p>
         </div>
 
         <div class="projects">
           <article class="project project-featured" data-reveal style="--accent:#c8402a">
             <a class="cover" href="projects/shawarma-ai/" tabindex="-1" aria-hidden="true">
-              <img src="projects/shawarma-ai/img/chicken-wrap.webp" alt="" width="1536" height="1024" loading="lazy" style="object-position:62% 50%" />
+              <img src="assets/covers/shawarma-ai.webp" alt="" width="1440" height="900" loading="lazy" data-photo="projects/shawarma-ai/img/chicken-wrap.webp" data-photo-pos="62% 50%" />
               <span class="cover-cta"><span data-i18n="work.open">Open demo</span> →</span>
             </a>
             <div class="project-body">
@@ -84,7 +100,7 @@
 
           <article class="project" data-reveal style="--accent:#6f8560">
             <a class="cover" href="projects/studio-sage/" tabindex="-1" aria-hidden="true">
-              <img src="projects/studio-sage/img/living-room.webp" alt="" width="1536" height="1024" loading="lazy" style="object-position:40% 50%" />
+              <img src="assets/covers/studio-sage.webp" alt="" width="1440" height="900" loading="lazy" data-photo="projects/studio-sage/img/living-room.webp" data-photo-pos="40% 50%" />
               <span class="cover-cta"><span data-i18n="work.open">Open demo</span> →</span>
             </a>
             <div class="project-body">
@@ -96,7 +112,7 @@
 
           <article class="project" data-reveal style="--accent:#4f6b42">
             <a class="cover" href="projects/vet-clinic/" tabindex="-1" aria-hidden="true">
-              <img src="projects/vet-clinic/img/vet-dog.webp" alt="" width="1536" height="1024" loading="lazy" style="object-position:40% 40%" />
+              <img src="assets/covers/vet-clinic.webp" alt="" width="1440" height="900" loading="lazy" data-photo="projects/vet-clinic/img/vet-dog.webp" data-photo-pos="40% 40%" />
               <span class="cover-cta"><span data-i18n="work.open">Open demo</span> →</span>
             </a>
             <div class="project-body">
@@ -108,7 +124,7 @@
 
           <article class="project" data-reveal style="--accent:#a8843f">
             <a class="cover" href="projects/law-firm/" tabindex="-1" aria-hidden="true">
-              <img src="projects/law-firm/img/partners-meeting.webp" alt="" width="1536" height="1024" loading="lazy" style="object-position:50% 40%" />
+              <img src="assets/covers/law-firm.webp" alt="" width="1440" height="900" loading="lazy" data-photo="projects/law-firm/img/partners-meeting.webp" data-photo-pos="50% 40%" />
               <span class="cover-cta"><span data-i18n="work.open">Open demo</span> →</span>
             </a>
             <div class="project-body">
@@ -120,7 +136,7 @@
 
           <article class="project" data-reveal style="--accent:#0e8792">
             <a class="cover" href="projects/medical-consulting/" tabindex="-1" aria-hidden="true">
-              <img src="projects/medical-consulting/img/consultation.webp" alt="" width="1536" height="1024" loading="lazy" style="object-position:45% 40%" />
+              <img src="assets/covers/medical-consulting.webp" alt="" width="1440" height="900" loading="lazy" data-photo="projects/medical-consulting/img/consultation.webp" data-photo-pos="45% 40%" />
               <span class="cover-cta"><span data-i18n="work.open">Open demo</span> →</span>
             </a>
             <div class="project-body">
@@ -134,7 +150,7 @@
     </section>
 
     <!-- Services -->
-    <section class="section section-dark" id="services">
+    <section class="section section-soft" id="services">
       <div class="container">
         <div class="section-head" data-reveal>
           <p class="eyebrow" data-i18n="services.eyebrow">What I do</p>
@@ -154,7 +170,7 @@
       <div class="container ai-box" data-reveal>
         <div>
           <p class="eyebrow" data-i18n="ai.eyebrow">AI for small business</p>
-          <h2 data-i18n="ai.title">What can an AI assistant do on your website?</h2>
+          <h2 data-i18n="ai.title">Step into the AI era. <em>No headache.</em></h2>
           <a class="btn" href="projects/shawarma-ai/#ai" data-i18n="ai.cta">Try the live demo</a>
         </div>
         <ol class="ai-list">
@@ -237,7 +253,7 @@
       <div class="container contact-grid">
         <div data-reveal>
           <p class="eyebrow" data-i18n="contact.eyebrow">Contact</p>
-          <h2 data-i18n="contact.title">Let's build something for your business</h2>
+          <h2 data-i18n="contact.title">Tell me what's broken. <em>I'll fix it.</em></h2>
           <p class="lead" data-i18n="contact.lead"></p>
           <ul class="channels">
             <li data-contact-item="email" hidden><a data-contact="email" href="#"><span data-i18n="contact.email">Email</span> <span aria-hidden="true">↗</span></a></li>

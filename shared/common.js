@@ -27,8 +27,10 @@
     // Portfolio navigation: fixed demo bar at the top of every demo page --------
     // Always visible, so visitors know this is a portfolio demo and can get back.
     // Not shown on the portfolio itself or inside its live previews (iframes).
+    // "?preview" in the URL hides it too (used to take the cover screenshots).
     var inFrame = window.self !== window.top;
-    if (!inFrame && !document.querySelector("[data-no-badge]")) {
+    var preview = /[?&]preview\b/.test(location.search);
+    if (!inFrame && !preview && !document.querySelector("[data-no-badge]")) {
       // Same order as the project grid on the portfolio home page.
       var PROJECTS = [
         { slug: "shawarma-ai", name: "Wrap Lab" },
