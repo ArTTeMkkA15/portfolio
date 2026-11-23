@@ -117,7 +117,7 @@ export function menuAsText() {
   const lines = MENU.map((item) => {
     const tags = item.tags.length ? ` [${item.tags.join(", ")}]` : "";
     const allergens = item.allergens.length ? item.allergens.join(", ") : "none";
-    return `- ${item.name.en} / ${item.name.pl} — ${item.price} zł${tags}. ${item.desc.en} Allergens: ${allergens}.`;
+    return `- ${item.name.en} / ${item.name.pl} / ${item.name.ru} — ${item.price} zł${tags}. ${item.desc.en} Allergens: ${allergens}.`;
   });
   return [
     `Restaurant: ${RESTAURANT.name}, ${RESTAURANT.address}, phone ${RESTAURANT.phone}.`,
