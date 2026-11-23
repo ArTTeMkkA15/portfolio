@@ -20,12 +20,12 @@ const root = document.createElement("div");
 root.className = "chat";
 root.innerHTML = `
   <button class="chat-fab" type="button" aria-expanded="false" aria-controls="chat-panel">
-    <span class="chat-fab-icon" aria-hidden="true">🌯</span>
+    <span class="chat-fab-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-4.5 4v-4h0A1.5 1.5 0 0 1 4 14.5z"/><path d="M8.5 8.5h7M8.5 11.5h4.5"/></svg></span>
     <span class="chat-fab-label" data-i18n="chat.open">${t("chat.open")}</span>
   </button>
   <section class="chat-panel" id="chat-panel" role="dialog" aria-label="${t("chat.title")}" hidden>
     <header class="chat-head">
-      <div class="chat-avatar" aria-hidden="true">🤖</div>
+      <div class="chat-avatar" aria-hidden="true">WL</div>
       <div class="chat-head-text">
         <strong data-i18n="chat.title">${t("chat.title")}</strong>
         <span class="chat-status"><i></i><span data-i18n="chat.online">${t("chat.online")}</span></span>

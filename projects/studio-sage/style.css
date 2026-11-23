@@ -85,7 +85,7 @@ p { margin: 0 0 1em; }
 
 .hero-art { position: relative; height: 520px; }
 .arch { position: absolute; inset: 0 60px 0 50px; border-radius: 220px 220px var(--r-lg) var(--r-lg); overflow: hidden; background: linear-gradient(180deg, #e6ddcd, #d6dcc8); box-shadow: var(--shadow); }
-.arch svg { width: 100%; height: 100%; object-fit: cover; }
+.arch img { width: 100%; height: 100%; object-fit: cover; object-position: 30% 50%; }
 .card { position: absolute; background: #fff; border-radius: var(--r-md); padding: 18px 20px; box-shadow: var(--shadow); animation: float 6s ease-in-out infinite; }
 .card p { margin: 0; font-size: 0.85rem; font-weight: 700; }
 .card-swatch { left: 0; bottom: 70px; }

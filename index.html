@@ -4,14 +4,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title data-i18n="meta.title">Websites &amp; AI integrations for small businesses — portfolio</title>
-  <meta name="description" content="Web developer portfolio: landing pages, website redesigns and AI chat assistants (Claude, ChatGPT) for small businesses." />
-  <meta property="og:title" content="Websites & AI integrations for small businesses" />
+  <meta name="description" content="ArTT — landing pages, website redesigns and AI chat assistants (Claude, ChatGPT) for small businesses." />
+  <meta property="og:title" content="ArTT — websites & AI integrations for small businesses" />
   <meta property="og:description" content="Landing pages, redesigns and AI chat assistants. Five live demos in different styles." />
-  <meta name="theme-color" content="#111111" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%236D5BFF'/%3E%3Cstop offset='1' stop-color='%23FF7A45'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='9' fill='url(%23g)'/%3E%3Cpath d='M11 11l-4 5 4 5M21 11l4 5-4 5M18 9l-4 14' stroke='%23fff' stroke-width='2.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <meta property="og:image" content="projects/shawarma-ai/img/chicken-wrap.webp" />
+  <meta name="theme-color" content="#141414" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23141414'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='17' font-style='italic' text-anchor='middle' fill='%23F4EFE6'%3EA%3C/text%3E%3Ccircle cx='24' cy='21' r='2' fill='%23E8572A'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body data-no-badge>
@@ -19,10 +20,7 @@
 
   <header class="site-header">
     <div class="container header-row">
-      <a class="logo" href="#top">
-        <span class="logo-mark" aria-hidden="true">&lt;/&gt;</span>
-        <span data-i18n="owner.name">Your Name</span>
-      </a>
+      <a class="logo" href="#top"><span data-i18n="owner.name">ArTT</span><i aria-hidden="true">.</i></a>
       <nav aria-label="Main">
         <a href="#work" data-i18n="nav.work">Projects</a>
         <a href="#services" data-i18n="nav.services">Services</a>
@@ -43,14 +41,15 @@
   <main id="main">
     <!-- Hero -->
     <section class="hero" id="top">
-      <div class="glow" aria-hidden="true"></div>
       <div class="container">
         <p class="badge"><span class="dot"></span><span data-i18n="hero.badge">Available for new projects</span></p>
-        <h1 data-i18n="hero.title">Websites that bring clients — <span>with AI built in</span></h1>
-        <p class="lead" data-i18n="hero.lead"></p>
-        <div class="hero-cta">
-          <a class="btn" href="#work" data-i18n="hero.primary">See my projects</a>
-          <a class="btn btn-ghost" href="#contact" data-i18n="hero.secondary">Get a free quote</a>
+        <h1 data-i18n="hero.title">Websites that bring clients — <em>with AI built in</em></h1>
+        <div class="hero-bottom">
+          <p class="lead" data-i18n="hero.lead"></p>
+          <div class="hero-cta">
+            <a class="btn" href="#work" data-i18n="hero.primary">See my projects</a>
+            <a class="btn btn-ghost" href="#contact" data-i18n="hero.secondary">Get a free quote</a>
+          </div>
         </div>
         <dl class="hero-stats">
           <div><dt>5–7</dt><dd data-i18n="hero.s1">days for a typical landing page</dd></div>
@@ -70,56 +69,64 @@
         </div>
 
         <div class="projects">
-          <article class="project project-featured" data-reveal style="--accent:#E3472B">
-            <a class="preview" href="projects/shawarma-ai/" tabindex="-1" aria-hidden="true">
-              <iframe data-src="projects/shawarma-ai/" title="" loading="lazy" tabindex="-1" scrolling="no"></iframe>
+          <article class="project project-featured" data-reveal style="--accent:#c8402a">
+            <a class="cover" href="projects/shawarma-ai/" tabindex="-1" aria-hidden="true">
+              <img src="projects/shawarma-ai/img/chicken-wrap.webp" alt="" width="1536" height="1024" loading="lazy" style="object-position:62% 50%" />
+              <span class="cover-cta"><span data-i18n="work.open">Open demo</span> →</span>
             </a>
             <div class="project-body">
-              <p class="kicker"><span class="chip chip-ai">✦ <span data-i18n="work.featured">AI integration</span></span></p>
-              <h3 data-i18n="work.p5t">Wrap Lab — shawarma + AI chat</h3>
+              <p class="meta"><span class="num">01</span><span data-i18n="work.k5">Restaurant · AI chat</span><span class="flag" data-i18n="work.featured">AI integration</span></p>
+              <h3><a href="projects/shawarma-ai/" data-i18n="work.p5t">Wrap Lab — shawarma + AI chat</a></h3>
               <p data-i18n="work.p5d"></p>
               <ul class="tags"><li>Claude API</li><li>OpenAI API</li><li>Streaming</li><li>Serverless</li><li>EN / PL</li></ul>
-              <a class="link" href="projects/shawarma-ai/"><span data-i18n="work.open">Open demo</span> →</a>
             </div>
           </article>
 
-          <article class="project" data-reveal style="--accent:#9CAF88">
-            <a class="preview" href="projects/studio-sage/" tabindex="-1" aria-hidden="true"><iframe data-src="projects/studio-sage/" title="" loading="lazy" tabindex="-1" scrolling="no"></iframe></a>
+          <article class="project" data-reveal style="--accent:#6f8560">
+            <a class="cover" href="projects/studio-sage/" tabindex="-1" aria-hidden="true">
+              <img src="projects/studio-sage/img/living-room.webp" alt="" width="1536" height="1024" loading="lazy" style="object-position:40% 50%" />
+              <span class="cover-cta"><span data-i18n="work.open">Open demo</span> →</span>
+            </a>
             <div class="project-body">
-              <h3 data-i18n="work.p1t">Sage &amp; Linen — design studio</h3>
+              <p class="meta"><span class="num">02</span><span data-i18n="work.k1">Design studio</span></p>
+              <h3><a href="projects/studio-sage/" data-i18n="work.p1t">Sage &amp; Linen — design studio</a></h3>
               <p data-i18n="work.p1d"></p>
-              <ul class="tags"><li>Soft UI</li><li>Animations</li><li>Form</li></ul>
-              <a class="link" href="projects/studio-sage/"><span data-i18n="work.open">Open demo</span> →</a>
             </div>
           </article>
 
-          <article class="project" data-reveal style="--accent:#7FA06E">
-            <a class="preview" href="projects/vet-clinic/" tabindex="-1" aria-hidden="true"><iframe data-src="projects/vet-clinic/" title="" loading="lazy" tabindex="-1" scrolling="no"></iframe></a>
+          <article class="project" data-reveal style="--accent:#4f6b42">
+            <a class="cover" href="projects/vet-clinic/" tabindex="-1" aria-hidden="true">
+              <img src="projects/vet-clinic/img/vet-dog.webp" alt="" width="1536" height="1024" loading="lazy" style="object-position:40% 40%" />
+              <span class="cover-cta"><span data-i18n="work.open">Open demo</span> →</span>
+            </a>
             <div class="project-body">
-              <h3 data-i18n="work.p2t">Paws &amp; Meadow — vet clinic</h3>
+              <p class="meta"><span class="num">03</span><span data-i18n="work.k2">Vet clinic</span></p>
+              <h3><a href="projects/vet-clinic/" data-i18n="work.p2t">Paws &amp; Meadow — vet clinic</a></h3>
               <p data-i18n="work.p2d"></p>
-              <ul class="tags"><li>Booking</li><li>SVG illustration</li><li>FAQ</li></ul>
-              <a class="link" href="projects/vet-clinic/"><span data-i18n="work.open">Open demo</span> →</a>
             </div>
           </article>
 
-          <article class="project" data-reveal style="--accent:#C8A45D">
-            <a class="preview" href="projects/law-firm/" tabindex="-1" aria-hidden="true"><iframe data-src="projects/law-firm/" title="" loading="lazy" tabindex="-1" scrolling="no"></iframe></a>
+          <article class="project" data-reveal style="--accent:#a8843f">
+            <a class="cover" href="projects/law-firm/" tabindex="-1" aria-hidden="true">
+              <img src="projects/law-firm/img/partners-meeting.webp" alt="" width="1536" height="1024" loading="lazy" style="object-position:50% 40%" />
+              <span class="cover-cta"><span data-i18n="work.open">Open demo</span> →</span>
+            </a>
             <div class="project-body">
-              <h3 data-i18n="work.p3t">Aldermont Legal — law firm</h3>
+              <p class="meta"><span class="num">04</span><span data-i18n="work.k3">Law firm</span></p>
+              <h3><a href="projects/law-firm/" data-i18n="work.p3t">Aldermont Legal — law firm</a></h3>
               <p data-i18n="work.p3d"></p>
-              <ul class="tags"><li>Corporate</li><li>Counters</li><li>GDPR consent</li></ul>
-              <a class="link" href="projects/law-firm/"><span data-i18n="work.open">Open demo</span> →</a>
             </div>
           </article>
 
-          <article class="project" data-reveal style="--accent:#0E9AA7">
-            <a class="preview" href="projects/medical-consulting/" tabindex="-1" aria-hidden="true"><iframe data-src="projects/medical-consulting/" title="" loading="lazy" tabindex="-1" scrolling="no"></iframe></a>
+          <article class="project" data-reveal style="--accent:#0e8792">
+            <a class="cover" href="projects/medical-consulting/" tabindex="-1" aria-hidden="true">
+              <img src="projects/medical-consulting/img/consultation.webp" alt="" width="1536" height="1024" loading="lazy" style="object-position:45% 40%" />
+              <span class="cover-cta"><span data-i18n="work.open">Open demo</span> →</span>
+            </a>
             <div class="project-body">
-              <h3 data-i18n="work.p4t">Clarity Health — medical consulting</h3>
+              <p class="meta"><span class="num">05</span><span data-i18n="work.k4">Healthcare consulting</span></p>
+              <h3><a href="projects/medical-consulting/" data-i18n="work.p4t">Clarity Health — medical consulting</a></h3>
               <p data-i18n="work.p4d"></p>
-              <ul class="tags"><li>B2B</li><li>Dashboard UI</li><li>Case studies</li></ul>
-              <a class="link" href="projects/medical-consulting/"><span data-i18n="work.open">Open demo</span> →</a>
             </div>
           </article>
         </div>
@@ -136,7 +143,7 @@
         <div class="services">
           <article data-reveal><span class="num">01</span><h3 data-i18n="services.s1t"></h3><p data-i18n="services.s1d"></p></article>
           <article data-reveal><span class="num">02</span><h3 data-i18n="services.s2t"></h3><p data-i18n="services.s2d"></p></article>
-          <article data-reveal class="hl"><span class="num">03</span><h3 data-i18n="services.s3t"></h3><p data-i18n="services.s3d"></p></article>
+          <article data-reveal><span class="num">03</span><h3 data-i18n="services.s3t"></h3><p data-i18n="services.s3d"></p></article>
           <article data-reveal><span class="num">04</span><h3 data-i18n="services.s4t"></h3><p data-i18n="services.s4d"></p></article>
         </div>
       </div>
@@ -150,11 +157,11 @@
           <h2 data-i18n="ai.title">What can an AI assistant do on your website?</h2>
           <a class="btn" href="projects/shawarma-ai/#ai" data-i18n="ai.cta">Try the live demo</a>
         </div>
-        <ul class="ai-list">
+        <ol class="ai-list">
           <li><h3 data-i18n="ai.a1t"></h3><p data-i18n="ai.a1d"></p></li>
           <li><h3 data-i18n="ai.a2t"></h3><p data-i18n="ai.a2d"></p></li>
           <li><h3 data-i18n="ai.a3t"></h3><p data-i18n="ai.a3d"></p></li>
-        </ul>
+        </ol>
       </div>
     </section>
 
@@ -233,16 +240,19 @@
           <h2 data-i18n="contact.title">Let's build something for your business</h2>
           <p class="lead" data-i18n="contact.lead"></p>
           <ul class="channels">
-            <li><a data-contact="email" href="#"><span>✉</span><span data-i18n="contact.email">Email</span></a></li>
-            <li><a data-contact="telegram" href="#" target="_blank" rel="noopener"><span>✈</span><span data-i18n="contact.telegram">Telegram</span></a></li>
-            <li><a data-contact="whatsapp" href="#" target="_blank" rel="noopener"><span>☎</span><span data-i18n="contact.whatsapp">WhatsApp</span></a></li>
+            <li data-contact-item="email" hidden><a data-contact="email" href="#"><span data-i18n="contact.email">Email</span> <span aria-hidden="true">↗</span></a></li>
+            <li data-contact-item="telegram" hidden><a data-contact="telegram" href="#" target="_blank" rel="noopener"><span data-i18n="contact.telegram">Telegram</span> <span aria-hidden="true">↗</span></a></li>
+            <li data-contact-item="whatsapp" hidden><a data-contact="whatsapp" href="#" target="_blank" rel="noopener"><span data-i18n="contact.whatsapp">WhatsApp</span> <span aria-hidden="true">↗</span></a></li>
           </ul>
         </div>
-        <form class="form" data-mailto-form data-reveal>
-          <label><span data-i18n="contact.name">Your name</span><input name="name" required autocomplete="name" /></label>
-          <label><span data-i18n="contact.mail">Email or phone</span><input name="contact" required /></label>
-          <label><span data-i18n="contact.msg">What do you need?</span><textarea name="message" rows="4" required></textarea></label>
+        <form class="form" data-contact-form data-reveal novalidate>
+          <label><span data-i18n="contact.name">Your name</span><input name="name" required autocomplete="name" maxlength="100" /></label>
+          <label><span data-i18n="contact.mail">Email or phone</span><input name="contact" required maxlength="150" /></label>
+          <label><span data-i18n="contact.msg">What do you need?</span><textarea name="message" rows="4" required maxlength="3000"></textarea></label>
+          <!-- Spam trap: hidden from people, bots fill it in. -->
+          <label class="hp" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off" /></label>
           <button class="btn" type="submit" data-i18n="contact.send">Send message</button>
+          <p class="form-status" data-form-status role="status" aria-live="polite"></p>
         </form>
       </div>
     </section>
@@ -250,7 +260,7 @@
 
   <footer class="footer">
     <div class="container footer-row">
-      <p>© 2026 <span data-i18n="owner.name">Your Name</span> · <span data-i18n="owner.role"></span></p>
+      <p>© 2026 <span data-i18n="owner.name">ArTT</span> · <span data-i18n="owner.role"></span></p>
       <p class="muted" data-i18n="footer.made"></p>
     </div>
   </footer>

@@ -3,11 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title data-i18n="meta.title">Wrap Lab — shawarma with an AI assistant</title>
-  <meta name="description" content="Shawarma restaurant landing page with an AI chat assistant powered by Claude or ChatGPT. Portfolio demo." />
-  <meta property="og:title" content="Wrap Lab — shawarma with an AI assistant" />
-  <meta name="theme-color" content="#1E1A17" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23F4A300'/%3E%3Ctext x='16' y='22' font-size='17' text-anchor='middle'%3E%F0%9F%8C%AF%3C/text%3E%3C/svg%3E" />
+  <title data-i18n="meta.title">Wrap Lab — shawarma bar in Kraków</title>
+  <meta name="description" content="Shawarma bar landing page with an AI chat assistant powered by Claude or ChatGPT. Portfolio demo." />
+  <meta property="og:title" content="Wrap Lab — shawarma bar in Kraków" />
+  <meta property="og:image" content="img/chicken-wrap.webp" />
+  <meta name="theme-color" content="#16120F" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2316120F'/%3E%3Cpath d='M8 9h3l2 10 3-10 3 10 2-10h3l-4 14h-2.5L16 14l-2.5 9H11z' fill='%23F2E8D8'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -19,17 +20,18 @@
 
   <header class="site-header">
     <div class="container header-row">
-      <a class="logo" href="#top"><span class="logo-mark" aria-hidden="true">🌯</span>WRAP<b>LAB</b></a>
+      <a class="logo" href="#top">Wrap Lab<span aria-hidden="true">.</span></a>
       <nav aria-label="Main">
         <a href="#menu" data-i18n="nav.menu">Menu</a>
-        <a href="#ai" data-i18n="nav.ai">AI assistant</a>
-        <a href="#visit" data-i18n="nav.visit">Visit us</a>
+        <a href="#kitchen" data-i18n="nav.kitchen">Kitchen</a>
+        <a href="#ai" data-i18n="nav.ai">Ask us</a>
+        <a href="#visit" data-i18n="nav.visit">Visit</a>
       </nav>
       <div class="header-actions">
         <div class="lang" role="group" aria-label="Language">
           <button type="button" data-set-lang="en">EN</button><button type="button" data-set-lang="pl">PL</button>
         </div>
-        <a class="btn btn-small" href="tel:+48000000000" data-i18n="nav.order">Order: +48 000 000 000</a>
+        <a class="btn btn-small" href="tel:+48000000000" data-i18n="nav.order">Call to order</a>
         <button class="burger" type="button" data-nav-toggle aria-expanded="false" aria-label="Menu"><span></span><span></span></button>
       </div>
     </div>
@@ -37,71 +39,46 @@
 
   <main id="main">
     <section class="hero" id="top">
-      <div class="container hero-grid">
-        <div>
-          <p class="tag" data-i18n="hero.tag">Kraków · open till 2 AM on weekends</p>
-          <h1 data-i18n="hero.title">Shawarma, <span>done properly.</span></h1>
-          <p class="lead" data-i18n="hero.lead"></p>
-          <div class="hero-cta">
-            <a class="btn" href="#menu" data-i18n="hero.menu">See the menu</a>
-            <a class="btn btn-outline" href="#ai" data-open-chat><span aria-hidden="true">🤖</span> <span data-i18n="hero.ask">Ask our AI</span></a>
-          </div>
+      <img class="hero-img" src="img/chicken-wrap.webp" alt="Grilled chicken shawarma wrap cut in half, with red cabbage, pickles and garlic sauce" width="1536" height="1024" fetchpriority="high" />
+      <div class="container hero-inner">
+        <p class="kicker" data-i18n="hero.kicker">Shawarma bar · Kraków</p>
+        <h1 data-i18n="hero.title">Shawarma, <em>done properly.</em></h1>
+        <p class="lead" data-i18n="hero.lead"></p>
+        <div class="hero-cta">
+          <a class="btn" href="#menu" data-i18n="hero.menu">See the menu</a>
+          <button class="btn btn-line" type="button" data-open-chat data-i18n="hero.ask">Ask a question</button>
         </div>
-        <div class="hero-art" aria-hidden="true">
-          <div class="sun"></div>
-          <svg viewBox="0 0 360 360" class="wrap">
-            <g transform="rotate(-18 180 180)">
-              <path d="M110 60 L250 60 L235 320 Q180 345 125 320Z" fill="#F3D9A4"/>
-              <path d="M110 60 L250 60 L245 120 Q180 140 115 120Z" fill="#E9C07A"/>
-              <g>
-                <circle cx="140" cy="62" r="20" fill="#5FA36B"/><circle cx="170" cy="50" r="22" fill="#E3472B"/>
-                <circle cx="200" cy="58" r="20" fill="#B5652E"/><circle cx="228" cy="54" r="18" fill="#5FA36B"/>
-                <circle cx="155" cy="40" r="14" fill="#FFF4E2"/><circle cx="215" cy="38" r="13" fill="#8C4A22"/>
-              </g>
-              <path d="M125 160 Q180 175 238 160 M128 210 Q180 225 236 210 M131 260 Q180 275 233 260" stroke="#E2B970" stroke-width="5" fill="none" stroke-linecap="round"/>
-              <rect x="118" y="230" width="124" height="96" rx="8" fill="#E3472B"/>
-              <text x="180" y="290" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="22" fill="#FFF4E2">WRAP LAB</text>
-            </g>
-          </svg>
-          <div class="sticker s1" data-i18n="hero.sticker1">🔥 Harissa Fire</div>
-          <div class="sticker s2" data-i18n="hero.sticker2">Fresh pita<br>every morning</div>
-        </div>
-      </div>
-      <div class="ticker" aria-hidden="true">
-        <div class="ticker-track">
-          <span>SHAWARMA ✦ FALAFEL ✦ HALLOUMI ✦ HARISSA ✦ HUMMUS ✦ LAB BOX ✦ </span><span>SHAWARMA ✦ FALAFEL ✦ HALLOUMI ✦ HARISSA ✦ HUMMUS ✦ LAB BOX ✦ </span>
-        </div>
+        <ul class="facts">
+          <li data-i18n="hero.f1"></li><li data-i18n="hero.f2"></li><li data-i18n="hero.f3"></li>
+        </ul>
       </div>
     </section>
 
-    <section class="section ai" id="ai">
-      <div class="container ai-grid">
-        <div data-reveal>
-          <p class="eyebrow" data-i18n="ai.eyebrow">New · AI assistant</p>
-          <h2 data-i18n="ai.title">Questions about allergens, spice or delivery? <span>Just ask.</span></h2>
-          <p class="lead" data-i18n="ai.lead"></p>
-          <ul class="features">
-            <li data-i18n="ai.f1"></li><li data-i18n="ai.f2"></li><li data-i18n="ai.f3"></li><li data-i18n="ai.f4"></li>
-          </ul>
-          <button class="btn" type="button" data-open-chat data-i18n="ai.try">Try the assistant</button>
-          <p class="note" data-i18n="ai.note"></p>
-        </div>
-        <div class="phone" data-reveal aria-hidden="true">
-          <div class="phone-head"><span>🤖</span><strong data-i18n="chat.title">Wrap Lab assistant</strong></div>
-          <div class="phone-body">
-            <p class="bubble user" data-i18n="ai.sampleQ"></p>
-            <p class="bubble bot" data-i18n="ai.sampleA"></p>
-            <p class="bubble bot typing"><i></i><i></i><i></i></p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="menu">
+    <section class="signatures" data-reveal>
       <div class="container">
-        <div class="section-head" data-reveal>
-          <p class="eyebrow" data-i18n="menu.eyebrow">Menu</p>
-          <h2 data-i18n="menu.title">Everything is made in-house</h2>
+        <div class="sig-head">
+          <p class="kicker" data-i18n="sig.kicker">The three we're known for</p>
+          <h2 data-i18n="sig.title">Chicken, beef or falafel</h2>
+        </div>
+        <figure class="sig-photo">
+          <img src="img/wraps-trio.webp" alt="Three wraps side by side: chicken, beef and falafel" width="1536" height="1024" loading="lazy" />
+        </figure>
+        <ol class="sig-list">
+          <li><span class="sig-num">01</span><div><h3 data-i18n="sig.c"></h3><p data-i18n="sig.cd"></p></div><span class="sig-price">26 zł</span></li>
+          <li><span class="sig-num">02</span><div><h3 data-i18n="sig.b"></h3><p data-i18n="sig.bd"></p></div><span class="sig-price">29 zł</span></li>
+          <li><span class="sig-num">03</span><div><h3 data-i18n="sig.f"></h3><p data-i18n="sig.fd"></p></div><span class="sig-price">24 zł</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section menu-section" id="menu">
+      <div class="container">
+        <div class="menu-head" data-reveal>
+          <div>
+            <p class="kicker" data-i18n="menu.kicker">Menu</p>
+            <h2 data-i18n="menu.title">Everything is made here</h2>
+          </div>
+          <p class="menu-note" data-i18n="menu.note"></p>
         </div>
         <div class="filters" data-menu-filters role="toolbar">
           <button type="button" class="is-active" data-filter="all" data-i18n="menu.all">All</button>
@@ -109,10 +86,10 @@
           <button type="button" data-filter="plates" data-i18n="menu.plates">Plates &amp; boxes</button>
           <button type="button" data-filter="sides" data-i18n="menu.sides">Sides</button>
           <button type="button" data-filter="drinks" data-i18n="menu.drinks">Drinks</button>
-          <button type="button" data-filter="spicy" data-i18n="menu.spicy">🔥 Spicy</button>
-          <button type="button" data-filter="vegan" data-i18n="menu.vegan">🌱 Vegan</button>
+          <button type="button" data-filter="spicy" data-i18n="menu.spicy">Spicy</button>
+          <button type="button" data-filter="vegan" data-i18n="menu.vegan">Vegan</button>
         </div>
-        <div class="menu-grid" data-menu-grid aria-live="polite"></div>
+        <div class="menu-list" data-menu-grid aria-live="polite"></div>
 
         <div class="combo" data-reveal>
           <div><h3 data-i18n="combo.title">Lab Combo</h3><p data-i18n="combo.text"></p></div>
@@ -121,10 +98,53 @@
       </div>
     </section>
 
+    <section class="section kitchen" id="kitchen">
+      <div class="container kitchen-grid">
+        <figure class="kitchen-photo" data-reveal>
+          <img src="img/ingredients.webp" alt="Ingredients laid out on a dark table: pita, grilled chicken, red cabbage, onion, tomatoes, pickles, garlic sauce and spices" width="1536" height="1024" loading="lazy" />
+        </figure>
+        <div data-reveal>
+          <p class="kicker" data-i18n="kitchen.kicker">The kitchen</p>
+          <h2 data-i18n="kitchen.title">Slow food, served fast</h2>
+          <p data-i18n="kitchen.p1"></p>
+          <p class="muted" data-i18n="kitchen.p2"></p>
+          <dl class="numbers">
+            <div><dt>24</dt><dd data-i18n="kitchen.s1">hours of marinating</dd></div>
+            <div><dt>6</dt><dd data-i18n="kitchen.s2">sauces made in-house</dd></div>
+            <div><dt>0</dt><dd data-i18n="kitchen.s3">frozen ingredients</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="section ai" id="ai">
+      <div class="container ai-grid">
+        <div data-reveal>
+          <p class="kicker" data-i18n="ai.kicker">Questions before you order?</p>
+          <h2 data-i18n="ai.title">Our online assistant answers in seconds</h2>
+          <p class="lead" data-i18n="ai.lead"></p>
+          <ul class="features">
+            <li data-i18n="ai.f1"></li><li data-i18n="ai.f2"></li><li data-i18n="ai.f3"></li><li data-i18n="ai.f4"></li>
+          </ul>
+          <button class="btn" type="button" data-open-chat data-i18n="ai.try">Open the chat</button>
+          <p class="note" data-i18n="ai.note"></p>
+        </div>
+        <div class="phone" data-reveal aria-hidden="true">
+          <div class="phone-head"><span class="mono">WL</span><div><strong>Wrap Lab</strong><small data-i18n="chat.online"></small></div></div>
+          <div class="phone-body">
+            <p class="bubble user" data-i18n="ai.sampleQ"></p>
+            <p class="bubble bot" data-i18n="ai.sampleA"></p>
+            <p class="bubble user" data-i18n="ai.sampleQ2"></p>
+            <p class="bubble bot typing"><i></i><i></i><i></i></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section visit" id="visit">
       <div class="container visit-grid">
         <div data-reveal>
-          <p class="eyebrow" data-i18n="visit.eyebrow">Visit us</p>
+          <p class="kicker" data-i18n="visit.kicker">Visit</p>
           <h2 data-i18n="visit.title">Come hungry</h2>
           <div class="info">
             <div><h3 data-i18n="visit.hoursT"></h3><p data-i18n="visit.hours"></p></div>
@@ -135,12 +155,13 @@
         </div>
         <div class="map" data-reveal aria-hidden="true">
           <svg viewBox="0 0 400 320">
-            <rect width="400" height="320" fill="#2A2420"/>
-            <path d="M0 210 C90 190 140 240 230 200 S360 150 400 170 L400 240 C330 230 280 270 200 260 S60 250 0 270Z" fill="#2F5D74" opacity=".55"/>
-            <g stroke="#4A403A" stroke-width="14" stroke-linecap="round"><path d="M-10 80 L410 120"/><path d="M120 -10 L160 330"/><path d="M290 -10 L250 330"/></g>
-            <g stroke="#3A322D" stroke-width="7"><path d="M-10 30 L410 50"/><path d="M40 -10 L60 330"/><path d="M350 -10 L340 330"/><path d="M-10 150 L410 170"/></g>
-            <rect x="180" y="30" width="60" height="40" rx="4" fill="#3E5A3A"/>
-            <g transform="translate(205 128)"><circle r="34" fill="#F4A300" opacity=".25"><animate attributeName="r" values="20;40;20" dur="2.4s" repeatCount="indefinite"/></circle><path d="M0 18 C-16 0 -16 -22 0 -22 C16 -22 16 0 0 18Z" fill="#E3472B"/><circle cy="-8" r="6" fill="#FFF4E2"/></g>
+            <rect width="400" height="320" fill="#211b17"/>
+            <path d="M0 210 C90 190 140 240 230 200 S360 150 400 170 L400 240 C330 230 280 270 200 260 S60 250 0 270Z" fill="#2c3f48"/>
+            <g stroke="#3a312b" stroke-width="14" stroke-linecap="round"><path d="M-10 80 L410 120"/><path d="M120 -10 L160 330"/><path d="M290 -10 L250 330"/></g>
+            <g stroke="#2e2723" stroke-width="7"><path d="M-10 30 L410 50"/><path d="M40 -10 L60 330"/><path d="M350 -10 L340 330"/><path d="M-10 150 L410 170"/></g>
+            <rect x="180" y="30" width="60" height="40" rx="4" fill="#2f3b2b"/>
+            <g transform="translate(205 128)"><circle r="26" fill="#d4462b" opacity=".18"/><path d="M0 18 C-16 0 -16 -22 0 -22 C16 -22 16 0 0 18Z" fill="#d4462b"/><circle cy="-8" r="6" fill="#f2e8d8"/></g>
+            <text x="222" y="112" font-family="DM Sans, sans-serif" font-size="13" font-weight="700" fill="#f2e8d8">Wrap Lab</text>
           </svg>
         </div>
       </div>
@@ -149,7 +170,7 @@
 
   <footer class="footer">
     <div class="container footer-row">
-      <a class="logo" href="#top"><span class="logo-mark" aria-hidden="true">🌯</span>WRAP<b>LAB</b></a>
+      <a class="logo" href="#top">Wrap Lab<span aria-hidden="true">.</span></a>
       <p>© 2026 Wrap Lab · <span data-i18n="footer.rights"></span></p>
     </div>
   </footer>

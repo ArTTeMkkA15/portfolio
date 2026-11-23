@@ -36,17 +36,17 @@ function answer(intent, lang, text) {
   const pl = lang === "pl";
   switch (intent) {
     case "greet":
-      return pl ? "Cześć! 👋 Jestem asystentem Wrap Lab. Zapytaj o menu, ostre dania, opcje wegańskie, dostawę albo godziny otwarcia." : "Hi! 👋 I'm the Wrap Lab assistant. Ask me about the menu, spicy dishes, vegan options, delivery or opening hours.";
+      return pl ? "Cześć! Jestem asystentem Wrap Lab. Zapytaj o menu, ostre dania, opcje wegańskie, dostawę albo godziny otwarcia." : "Hi! I'm the Wrap Lab assistant. Ask me about the menu, spicy dishes, vegan options, delivery or opening hours.";
     case "thanks":
-      return pl ? "Proszę bardzo! Smacznego 🌯" : "You're welcome! Enjoy your meal 🌯";
+      return pl ? "Proszę bardzo! Smacznego!" : "You're welcome! Enjoy your meal!";
     case "spicy": {
       const items = MENU.filter((i) => i.tags.includes("spicy"));
-      return (pl ? "Dla fanów ostrego 🔥\n" : "For spice lovers 🔥\n") + list(items, lang) + (pl ? "\nMożesz też dodać do dowolnego dania sos harissa — naprawdę pali." : "\nYou can also add harissa sauce to any dish — it's properly hot.");
+      return (pl ? "Dla fanów ostrego:\n" : "For spice lovers:\n") + list(items, lang) + (pl ? "\nMożesz też dodać do dowolnego dania sos harissa — naprawdę pali." : "\nYou can also add harissa sauce to any dish — it's properly hot.");
     }
     case "vegan": {
       const vegan = MENU.filter((i) => i.tags.includes("vegan"));
       const veg = MENU.filter((i) => i.tags.includes("vegetarian"));
-      return (pl ? "Opcje wegańskie 🌱\n" : "Vegan options 🌱\n") + list(vegan, lang) + (pl ? "\n\nWegetariańskie:\n" : "\n\nVegetarian:\n") + list(veg, lang);
+      return (pl ? "Opcje wegańskie:\n" : "Vegan options:\n") + list(vegan, lang) + (pl ? "\n\nWegetariańskie:\n" : "\n\nVegetarian:\n") + list(veg, lang);
     }
     case "allergy": {
       const dish = findDish(text);
@@ -69,16 +69,16 @@ function answer(intent, lang, text) {
       return COMBO[lang];
     case "recommend": {
       const best = MENU.filter((i) => i.tags.includes("bestseller"));
-      return (pl ? "Nasze hity ⭐\n" : "Our bestsellers ⭐\n") + list(best, lang) + (pl ? "\nZ frytkami i napojem w zestawie Lab tylko +12 zł." : "\nMake it a Lab Combo with fries and a drink for just +12 zł.");
+      return (pl ? "Ulubione dania gości:\n" : "Our guests' favourites:\n") + list(best, lang) + (pl ? "\nZ frytkami i napojem w zestawie Lab tylko +12 zł." : "\nMake it a Lab Combo with fries and a drink for just +12 zł.");
     }
     case "menu": {
       const dish = findDish(text);
       if (dish) return `${fmt(dish, lang)}. ${dish.desc[lang]}`;
       const wraps = MENU.filter((i) => i.category === "wraps");
-      return (pl ? "Nasze wrapy:\n" : "Our wraps:\n") + list(wraps, lang) + (pl ? "\nCałe menu znajdziesz na stronie powyżej 👆" : "\nThe full menu is on the page above 👆");
+      return (pl ? "Nasze wrapy:\n" : "Our wraps:\n") + list(wraps, lang) + (pl ? "\nCałe menu znajdziesz na stronie powyżej." : "\nThe full menu is on the page above.");
     }
     default:
-      return pl ? "Hmm, w trybie demo znam tylko podstawy 🙂 Zapytaj o menu, ceny, ostre lub wegańskie dania, alergeny, dostawę albo godziny otwarcia." : "Hmm, in demo mode I only know the basics 🙂 Ask about the menu, prices, spicy or vegan dishes, allergens, delivery or opening hours.";
+      return pl ? "Hmm, w trybie demo znam tylko podstawy. Zapytaj o menu, ceny, ostre lub wegańskie dania, alergeny, dostawę albo godziny otwarcia." : "Hmm, in demo mode I only know the basics. Ask about the menu, prices, spicy or vegan dishes, allergens, delivery or opening hours.";
   }
 }
 

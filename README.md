@@ -10,14 +10,16 @@ A portfolio home page plus five working demo landing pages in different styles. 
 | [`projects/law-firm`](projects/law-firm/) | Navy + gold, serif | Law firm, animated counters, consultation form with consent |
 | [`projects/medical-consulting`](projects/medical-consulting/) | Clean white + teal | Healthcare consulting, KPI dashboard hero, case studies |
 
-All businesses are fictional. Each demo shows a small "Demo project · Back to portfolio" badge.
+All businesses are fictional. Each demo has a fixed top bar with a DEMO label, "All projects" and previous/next links.
 
 ## Tech
 
 - Plain HTML, CSS and JavaScript — no build step.
 - `shared/i18n.js` — EN/PL switcher. Texts live in each page's `translations.js`.
-- `shared/common.js` — demo badge, mobile menu, scroll animations, counters, demo forms.
+- `shared/common.js` — demo bar, mobile menu, scroll animations, counters, demo forms.
 - `api/chat.js` — Vercel serverless function for the AI chat. Uses the official `@anthropic-ai/sdk` and `openai` packages and streams the answer.
+- `api/contact.js` — delivers the home page contact form to your inbox via [Resend](https://resend.com).
+- Photos live in each demo's `img/` folder; the home page uses them as project covers.
 - `projects/shawarma-ai/menu.js` — one menu file used by the page, the demo answers and the AI system prompt.
 
 ## Run locally
@@ -49,11 +51,12 @@ Keys stay on the server and are never sent to the browser. `.env` is in `.gitign
 1. Push this repository to GitHub.
 2. On [vercel.com](https://vercel.com): **Add New → Project → Import** the repository. Framework preset: **Other**. No build command is needed. Click **Deploy**.
 3. For real AI answers: **Project → Settings → Environment Variables**, add `ANTHROPIC_API_KEY` and/or `OPENAI_API_KEY`, then **Deployments → Redeploy**.
+4. For the contact form: create a free account at resend.com, create an API key and add `RESEND_API_KEY` and `CONTACT_TO_EMAIL` (your Resend account email) the same way, then redeploy. Until then the form shows an error, or opens the visitor's email app if you filled in `CONTACT.email`.
 
 After that, every `git push` to `main` deploys automatically.
 
 ## Personalise
 
-- Your name and role: `owner` in [`assets/translations.js`](assets/translations.js).
-- Email, Telegram and WhatsApp: `CONTACT` at the top of [`assets/main.js`](assets/main.js).
+- Name and role: `owner` in [`assets/translations.js`](assets/translations.js) (currently **ArTT**).
+- Public email, Telegram and WhatsApp buttons: `CONTACT` at the top of [`assets/main.js`](assets/main.js). Empty values are hidden.
 - Package prices: `pricing.p1price` … `p3price` in [`assets/translations.js`](assets/translations.js).

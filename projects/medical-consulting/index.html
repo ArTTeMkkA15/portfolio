@@ -55,24 +55,9 @@
           </ul>
         </div>
 
-        <div class="hero-visual" aria-hidden="true">
-          <div class="dash">
-            <div class="dash-top"><i></i><i></i><i></i></div>
-            <div class="dash-body">
-              <div class="kpi-row">
-                <div class="kpi"><span data-i18n="hero.card1">Patient wait time</span><strong data-i18n="hero.card1v">−38%</strong></div>
-                <div class="kpi"><span data-i18n="hero.card3">NPS score</span><strong>72</strong></div>
-              </div>
-              <svg viewBox="0 0 300 120" class="chart">
-                <defs><linearGradient id="g" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#0E9AA7" stop-opacity=".35"/><stop offset="1" stop-color="#0E9AA7" stop-opacity="0"/></linearGradient></defs>
-                <path d="M0 95 L30 88 L60 92 L90 70 L120 74 L150 55 L180 58 L210 38 L240 42 L270 22 L300 18 L300 120 L0 120Z" fill="url(#g)"/>
-                <path class="line" d="M0 95 L30 88 L60 92 L90 70 L120 74 L150 55 L180 58 L210 38 L240 42 L270 22 L300 18" fill="none" stroke="#0E9AA7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <div class="bars"><i style="--h:40%"></i><i style="--h:55%"></i><i style="--h:48%"></i><i style="--h:70%"></i><i style="--h:62%"></i><i style="--h:85%"></i><i style="--h:78%"></i></div>
-            </div>
-          </div>
-          <div class="float f1"><span class="dot ok"></span><div><small data-i18n="hero.card2">Accreditation</small><strong data-i18n="hero.card2v">Passed</strong></div></div>
-          <div class="float f2"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div>
+        <div class="hero-visual">
+          <img src="img/consultation.webp" alt="Physician showing a nurse results on a tablet in a bright clinic office" width="1536" height="1024" fetchpriority="high" />
+          <div class="float f1" aria-hidden="true"><div><small data-i18n="hero.card1">Patient wait time</small><strong data-i18n="hero.card1v">−38%</strong></div><svg viewBox="0 0 64 28" class="spark"><path d="M2 6 L14 9 L24 8 L34 15 L44 14 L54 22 L62 24"/></svg></div>
         </div>
       </div>
     </section>
@@ -101,8 +86,8 @@
           <h2 data-i18n="sectors.title">Specialist knowledge for every type of provider</h2>
         </div>
         <ul class="chips" data-reveal>
-          <li>🏥 <span data-i18n="sectors.a"></span></li><li>🏨 <span data-i18n="sectors.b"></span></li><li>🦷 <span data-i18n="sectors.c"></span></li>
-          <li>🧪 <span data-i18n="sectors.d"></span></li><li>🦿 <span data-i18n="sectors.e"></span></li><li>🚀 <span data-i18n="sectors.f"></span></li>
+          <li data-i18n="sectors.a"></li><li data-i18n="sectors.b"></li><li data-i18n="sectors.c"></li>
+          <li data-i18n="sectors.d"></li><li data-i18n="sectors.e"></li><li data-i18n="sectors.f"></li>
         </ul>
       </div>
     </section>
@@ -113,6 +98,9 @@
           <p class="eyebrow" data-i18n="process.eyebrow">Our approach</p>
           <h2 data-i18n="process.title">Diagnosis first, then treatment</h2>
         </div>
+        <figure class="process-photo" data-reveal>
+          <img src="img/team-review.webp" alt="Doctor and clinic staff member reviewing a process plan on a tablet" width="1536" height="1024" loading="lazy" />
+        </figure>
         <ol class="timeline">
           <li data-reveal><span>1</span><h3 data-i18n="process.p1t"></h3><p data-i18n="process.p1d"></p></li>
           <li data-reveal><span>2</span><h3 data-i18n="process.p2t"></h3><p data-i18n="process.p2d"></p></li>
