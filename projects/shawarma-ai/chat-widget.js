@@ -83,10 +83,13 @@ function addTyping() {
 }
 
 function renderProvider() {
+  // Once any real AI is connected, only show the providers that actually have a key.
+  const anyLive = state.live.claude || state.live.openai;
   root.querySelectorAll("[data-provider]").forEach((btn) => {
     const active = btn.dataset.provider === state.provider;
     btn.classList.toggle("is-active", active);
     btn.setAttribute("aria-checked", String(active));
+    btn.hidden = anyLive && !state.live[btn.dataset.provider];
   });
   demoBadge.hidden = state.live[state.provider];
 }
@@ -110,6 +113,11 @@ async function streamFromApi(messages, onText) {
     body: JSON.stringify({ provider: state.provider, messages }),
   });
   if (res.status === 503) return null; // no key → demo mode
+  if (res.status === 429) {
+    const note = await res.text(); // too many messages from this visitor
+    onText(note);
+    return note;
+  }
   if (!res.ok || !res.body) throw new Error(`HTTP ${res.status}`);
 
   const reader = res.body.getReader();

@@ -40,7 +40,8 @@ OPENAI_API_KEY=...      # ChatGPT
 
 Optional settings:
 
-- `CLAUDE_MODEL` — default `claude-opus-5-5`. A much cheaper option for a simple FAQ bot is `claude-haiku-5-5`.
+- `CLAUDE_MODEL` — default `claude-haiku-5-5`, the cheapest Claude model (about $0.0004 per answer, so $5 of credit covers roughly ten thousand messages). Stronger options: `claude-sonnet-5-5`, `claude-opus-5-5`.
+- Each visitor can send 15 messages per 10 minutes; history is capped at 12 messages to keep requests small.
 - `OPENAI_MODEL` — default `gpt-5-mini`.
 - `DEFAULT_PROVIDER` — `claude` or `openai`.
 
@@ -54,6 +55,18 @@ Keys stay on the server and are never sent to the browser. `.env` is in `.gitign
 4. For the contact form: create a free account at resend.com, create an API key and add `RESEND_API_KEY` and `CONTACT_TO_EMAIL` (your Resend account email) the same way, then redeploy. Until then the form shows an error, or opens the visitor's email app if you filled in `CONTACT.email`.
 
 After that, every `git push` to `main` deploys automatically.
+
+## Protection against abuse
+
+The repository is public, so nothing private lives in the code:
+
+- API keys and the inbox address (`CONTACT_TO_EMAIL`) exist only in Vercel's environment variables.
+- `/api/chat` and `/api/contact` only accept requests from this site's own pages, and are rate-limited
+  per visitor (chat: 15 messages / 10 min; form: 3 messages / hour) plus a daily cap for the whole site
+  (`CHAT_DAILY_LIMIT`, default 300; form: 50). Shared logic: `api/_guard.js`.
+- The chat's system prompt keeps the model on topic, history is capped at 12 messages and answers at 1,500 tokens.
+- Use prepaid Anthropic credit with auto-reload **off** and a monthly spend limit in the Console:
+  the worst case is then the credit you loaded, never a surprise bill.
 
 ## Personalise
 

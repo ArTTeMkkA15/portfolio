@@ -3,13 +3,19 @@
 //
 // Environment variables (Vercel → Project → Settings → Environment Variables):
 //   RESEND_API_KEY    — API key from resend.com
-//   CONTACT_TO_EMAIL  — where messages should arrive (on Resend's free plan without
+//   CONTACT_TO_EMAIL  — where messages should arrive. Kept only in Vercel settings, never in the
+//                       public code, so the address can't be scraped. (On Resend's free plan without
 //                       a verified domain this must be the email of your Resend account)
 //   CONTACT_FROM      — optional, e.g. "Portfolio <hello@yourdomain.com>" once your
 //                       domain is verified in Resend. Default: Resend's test sender.
 // Without RESEND_API_KEY / CONTACT_TO_EMAIL the function answers 503.
 
+import { isForeignOrigin, overRateLimit, overDailyCap } from "./_guard.js";
+
 const LIMITS = { name: 100, contact: 150, message: 3000 };
+// Keeps the form from being used to flood your inbox.
+const PER_VISITOR = { max: 3, windowMs: 60 * 60 * 1000 }; // 3 messages per hour per visitor
+const DAILY_LIMIT = 50;
 
 function sendJson(res, status, data) {
   res.statusCode = status;
@@ -40,8 +46,14 @@ export default async function handler(req, res) {
     return sendJson(res, 400, { error: "Invalid JSON" });
   }
 
+  if (isForeignOrigin(req)) return sendJson(res, 403, { error: "Forbidden" });
+
   // Spam trap: real visitors never see the "website" field.
   if (body.website) return sendJson(res, 200, { ok: true });
+
+  if (overRateLimit(req, "contact", PER_VISITOR.max, PER_VISITOR.windowMs) || overDailyCap("contact", DAILY_LIMIT)) {
+    return sendJson(res, 429, { error: "Too many messages. Please try again later." });
+  }
 
   const name = clean(body.name, LIMITS.name);
   const contact = clean(body.contact, LIMITS.contact);

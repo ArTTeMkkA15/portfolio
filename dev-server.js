@@ -50,7 +50,7 @@ const server = http.createServer(async (req, res) => {
   const pathname = decodeURIComponent(url.pathname);
 
   try {
-    const api = pathname.match(/^\/api\/([\w-]+)\/?$/);
+    const api = pathname.match(/^\/api\/([a-z][\w-]*)\/?$/); // "_helpers" are not endpoints
     if (api) return await handleApi(req, res, api[1]);
 
     let file = path.normalize(path.join(root, pathname));

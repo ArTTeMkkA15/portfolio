@@ -81,6 +81,7 @@ var COVER_MODE = "screens";
         .then(function (res) {
           if (res.ok) return "sent";
           if (res.status === 503) return "not-configured";
+          if (res.status === 429) return "too-many";
           throw new Error("HTTP " + res.status);
         })
         .then(function (result) {
@@ -88,6 +89,8 @@ var COVER_MODE = "screens";
             form.reset();
             form.classList.remove("was-validated");
             setStatus(t("contact.sent"), "ok");
+          } else if (result === "too-many") {
+            setStatus(t("contact.tooMany"), "error");
           } else if (CONTACT.email) {
             // Form delivery isn't set up yet: fall back to the visitor's email app.
             var subject = "Website enquiry — " + data.name;
