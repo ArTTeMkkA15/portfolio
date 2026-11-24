@@ -200,6 +200,56 @@
       counters.forEach(runCounter);
     }
 
+    // Smooth accordions (<details>) ------------------------------------------
+    // Animates the height of one element plus opacity/transform of its content,
+    // can be re-clicked mid-animation, and is skipped for prefers-reduced-motion.
+    document.querySelectorAll("details").forEach(function (d) {
+      var summary = d.querySelector("summary");
+      if (!summary || reduceMotion || !d.animate) return;
+      var anim = null;
+      var closing = false;
+      function heightWhen(open) {
+        var was = d.open;
+        d.open = open;
+        var h = d.offsetHeight;
+        d.open = was;
+        return h;
+      }
+      summary.addEventListener("click", function (e) {
+        e.preventDefault();
+        var start = d.offsetHeight; // current height, even mid-animation
+        if (anim) anim.cancel();
+        var wantOpen = closing || !d.open;
+        d.open = true;
+        var end = heightWhen(wantOpen);
+        closing = !wantOpen;
+        d.classList.toggle("is-closing", closing);
+        d.style.overflow = "hidden";
+        var timing = { duration: 340, easing: "cubic-bezier(0.22, 0.7, 0.2, 1)" };
+        var current = (anim = d.animate({ height: [start + "px", end + "px"] }, timing));
+        Array.prototype.forEach.call(d.children, function (child) {
+          if (child === summary) return;
+          child.animate(
+            wantOpen
+              ? { opacity: [0, 1], transform: ["translateY(-6px)", "none"] }
+              : { opacity: [1, 0], transform: ["none", "translateY(-6px)"] },
+            { duration: wantOpen ? 340 : 200, easing: "ease-out", fill: "none" }
+          );
+        });
+        current.finished.then(
+          function () {
+            if (anim !== current) return; // a newer click took over
+            anim = null;
+            closing = false;
+            d.open = wantOpen;
+            d.classList.remove("is-closing");
+            d.style.overflow = "";
+          },
+          function () {} // cancelled by a newer click
+        );
+      });
+    });
+
     // Demo forms -------------------------------------------------------------
     document.querySelectorAll("form[data-demo-form]").forEach(function (form) {
       form.setAttribute("novalidate", "");

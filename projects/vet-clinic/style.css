@@ -142,6 +142,7 @@ p { margin: 0 0 1em; }
 .faq summary::-webkit-details-marker { display: none; }
 .faq summary::after { content: "+"; flex: none; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--green-100); color: var(--green-dark); font-size: 1.2rem; transition: transform 0.3s; }
 .faq details[open] summary::after { transform: rotate(45deg); }
+.faq details.is-closing summary::after { transform: none; }
 .faq details p { color: var(--muted); padding-bottom: 8px; }
 
 .footer { padding: 50px 0 90px; }
