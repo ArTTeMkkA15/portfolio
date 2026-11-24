@@ -42,7 +42,9 @@ p { margin: 0 0 1em; }
 /* Header */
 .site-header { position: sticky; top: 0; z-index: 50; background: rgba(20, 20, 20, 0.92); backdrop-filter: blur(10px); border-bottom: 1px solid #2a2a2a; color: var(--paper); }
 .header-row { display: flex; align-items: center; gap: 28px; height: 68px; }
-.logo { font-family: var(--font-head); font-weight: 700; font-size: 1.6rem; letter-spacing: -0.02em; text-decoration: none; line-height: 1; }
+/* Logo 1a: Playfair Display, the two T's share one crossbar, accent full stop */
+.logo { font-family: "Playfair Display", var(--font-head); font-weight: 700; font-size: 1.75rem; letter-spacing: 0; text-decoration: none; line-height: 1; }
+.logo b { font-weight: inherit; letter-spacing: -0.08em; }
 .logo i { color: var(--accent); font-style: normal; }
 .site-header nav { display: flex; gap: 26px; margin-left: auto; }
 .site-header nav a { text-decoration: none; font-weight: 500; font-size: 0.94rem; color: #a8a39a; }
